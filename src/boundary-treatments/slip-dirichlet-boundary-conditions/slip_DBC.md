@@ -1,0 +1,5 @@
+# 滑移狄利克雷边界条件
+
+一般的滑移狄利克雷边界条件（Dirichlet Boundary Condition，DBC）虽然可能在时间步开始时已经满足，却带来了独特的挑战。与粘着型 DBC 不同，它们无法直接用[自由度消元法](../dirichlet-boundary-conditions/DOF_elimin.md)处理，主要原因是其约束雅可比矩阵并不由单位矩阵块构成。为应对这一复杂性，我们可以采用换基（change of basis）策略。
+
+在深入更一般的情形之前，先考察一类特殊的滑移 DBC——轴对齐的滑移 DBC——会很有启发。理解这一具体情形将为处理范围更广的滑移 DBC 奠定基础。

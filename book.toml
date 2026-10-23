@@ -1,0 +1,40 @@
+[book]
+authors = ["Minchen Li", "Chenfanfu Jiang", "Zhaofeng Luo", "Wenxin Du", "Chang Yu", "Žiga Kovačič", "Tianyi Xie"]
+language = "zh"
+src = "src"
+title = "基于物理的仿真"
+description = "一本关于基于物理的仿真的理论与算法的开源在线书籍。"
+
+[output.html]
+mathjax-support = false
+additional-css = ["./theme/catppuccin.css"]
+default-theme = "light"
+preferred-dark-theme = "macchiato"
+
+[preprocessor.katex]
+after = ["links"]
+trust = true
+
+[preprocessor.numeq]
+prefix = true
+
+[preprocessor.numthm]
+prefix = true
+custom_environments = [
+  ["thm", "定理", "**"],
+  ["lem", "引理", "**"],
+  ["prop", "命题", "**"],
+  ["def", "定义", "**"],
+  ["rem", "注记", "*"],
+  ["exp", "示例", "**"],
+  ["met", "方法", "**"],
+  ["fig", "图", ""],
+  ["alg", "算法", ""],
+  ["imp", "实现", "**"]
+]
+
+[preprocessor.bib]
+title = "参考文献"
+bibliography = "references.bib"
+hb-tpl = "style/refs_default.hbs"
+cite-hb-tpl = "style/cite_author_year.hbs"
