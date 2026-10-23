@@ -56,6 +56,16 @@ cargo install --path tools/numthm-zh --force   # 中文「定义/图/实现」�
 
 > 若改用 crates.io 的官方 `mdbook-numthm`，环境标签会显示为英文 `Definition`、`Figure` 等；中文标签依赖 `tools/numthm-zh` 中允许覆盖内置环境的补丁。
 
+## 更新在线版本
+
+修改 `src/` 后执行：
+
+```bash
+./deploy.sh   # 重新构建，并把 book/ 强制推送到 gh-pages 分支
+```
+
+GitHub Pages 会在约 1 分钟内自动重新发布。
+
 ## 翻译与校验
 
 - 统一术语表与 190 个章节标题译名，分 29 批翻译；
