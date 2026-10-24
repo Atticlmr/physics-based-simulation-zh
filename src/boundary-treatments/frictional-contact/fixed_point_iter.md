@@ -16,26 +16,26 @@ $$
 </figure>
 
 若记
-\begin{equation}
+$$
 \begin{aligned}
     & f_m(\{ \lambda, T \}) = \text{arg}\min_x E(x, \{ \lambda, T\}) \\
     & f_u(x) = \text{FrictionUpdate}(x),
 \end{aligned}
-\end{equation}
+$$
 则 {{ref: alg:lec9:friction_iter}} 本质上是一个不动点迭代，用于求如下函数的不动点：
-\begin{equation}
+$$
     (f_m \cdot f_u) (x) \equiv f_m( f_u (x)).
-\end{equation}
+$$
 
 > **{{def}}{def:lec9:fixed_point_iterations}**
 > $x$ 是函数 $f()$ 的不动点，当且仅当
-\begin{equation}
+$$
     x = f(x).
-\end{equation}
+$$
 > 不动点迭代则从 $x^0$ 出发，通过反复更新估计值
-\begin{equation}
+$$
     x^{i+1} \leftarrow f(x^i)
-\end{equation}
+$$
 > 来求函数 $f()$ 的不动点，直至收敛。
 
 由于不动点迭代只有在初始猜测足够接近最终解时才能收敛，{{ref: alg:lec9:friction_iter}} 的收敛同样要求较小的时间步长。但要注意，在固定 $\{ \lambda, T \}$ 时，每次最小化（{{ref: alg:lec9:friction_iter}} 第 4 行）在任意大的时间步长下仍然保证收敛。
