@@ -8,7 +8,7 @@
 首先离线运行一次未降维的仿真，生成 $N$ 个变形状态向量 $\{\mathbf{u}_1, \mathbf{u}_2, ..., \mathbf{u}_N\}$。
 随后把这些快照组装成矩阵 $\mathbf{A} = [\mathbf{u}_1, \mathbf{u}_2, ..., \mathbf{u}_N]$。通过对该矩阵做奇异值分解（SVD）来提取基，通常相对于质量加权内积 $\langle\mathbf{x}, \mathbf{y}\rangle_\mathbf{M} = \mathbf{x}^T\mathbf{M}\mathbf{y}$ 进行（这一技术称为质量-PCA）。分解 $\mathbf{A} = \mathbf{U}\Sigma\mathbf{V}^T$ 中对应最大 $r$ 个奇异值的 $\mathbf{U}$ 的列，就构成基 $\mathbf{U}$！
 
-该方法对训练数据而言是最优的，但其主要缺点在于必须进行缓慢的离线预仿真。
+该方法对训练数据而言是最优的，但其主要缺点在于必须做一次缓慢的离线预仿真。
 
 ### 由模态导数构造基
 该方法通过分析系统的基本非线性响应来自动构造基，无需像 POD 那样做未降维的预仿真。

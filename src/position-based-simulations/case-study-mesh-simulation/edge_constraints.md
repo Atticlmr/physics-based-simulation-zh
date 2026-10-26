@@ -63,7 +63,7 @@ def solve_edges(
         pos[id1] -= dlambda * w1 * grad
 ```
 
-该核函数直接实现了 {{eqref:eq:mesh:edge_correction}}。约束违反量 `C` 是当前距离与静止长度之差。拉格朗日乘子 `s` 遵循带柔度软化的 {{eqref:eq:mesh:edge_lambda}}。位置修正量以相反的符号施加，以保持动量守恒。
+该核函数直接实现了 {{eqref:eq:mesh:edge_correction}}。约束违反量 `C` 是当前距离与静止长度之差。拉格朗日乘子 `s` 遵循带柔度软化的 {{eqref:eq:mesh:edge_lambda}}。位置修正量以相反的符号施加，从而保持动量守恒。
 
 求解约束需要静止长度，因此我们在仿真开始前一次性计算所有静止边长：
 

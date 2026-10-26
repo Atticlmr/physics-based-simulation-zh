@@ -34,7 +34,7 @@ $$
 ```python
 {{#include ../../solid-sim-tutorial/4_friction/simulator.py:slope_vis}}
 ```
-现在我们就可以仿真一个落在无摩擦斜面上的弹性方块（{{ref: fig:lec10:slope_mu0}}）。
+现在我们就可以仿真落在无摩擦斜面上的弹性方块（{{ref: fig:lec10:slope_mu0}}）。
 <figure>
     <center>
     <img src="slope_mu0.jpg">

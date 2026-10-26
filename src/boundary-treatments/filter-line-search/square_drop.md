@@ -16,14 +16,14 @@ $$
     \nabla^2 d(\mathbf{x}) = \mathbf{0}.
     {{numeq}}{eq:lec8:dist_ground}
 $$
-将其与式 {{eqref: eq:lec7:barrier_grad}} 及式 {{eqref: eq:lec7:barrier_hess}} 结合，即可方便地实现该水平地面的障碍势能的梯度与海森矩阵计算：
+将其与式 {{eqref: eq:lec7:barrier_grad}} 及式 {{eqref: eq:lec7:barrier_hess}} 结合，即可方便地实现水平地面障碍势能的梯度与海森矩阵计算：
 
 {{imp}}{imp:lec8:barrier_val_grad_hess}[障碍能量值、梯度与海森矩阵，BarrierEnergy.py]
 ```python
 {{#include ../../solid-sim-tutorial/3_contact/BarrierEnergy.py:val_grad_hess}}
 ```
 
-对于过滤线搜索，设上一次迭代中的位置为 \\(\mathbf{x}\\)、某个节点的搜索方向为 \\(\mathbf{p}\\)，则有符号距离函数简单地写作
+对于过滤线搜索，设上一次迭代中的位置为 \\(\mathbf{x}\\)、某个节点的搜索方向为 \\(\mathbf{p}\\)，则有符号距离函数可简单写为
 \\[
     d(\mathbf{x} + \alpha \mathbf{p}) = \mathbf{x}_y + \alpha \mathbf{p}_y - y_0,
 \\]

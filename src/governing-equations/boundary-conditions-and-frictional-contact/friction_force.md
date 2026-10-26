@@ -1,6 +1,6 @@
 ## 摩擦力
 
-与[摩擦接触](../../finite-element-method/3d-frictional-self-contact/friction.md)类似，在库仑约束下最大化耗散率，可以变分地定义单位面积上的摩擦力：
+与[摩擦接触](../../finite-element-method/3d-frictional-self-contact/friction.md)类似，在库仑约束下最大化耗散率，可以用变分形式定义单位面积上的摩擦力：
 
 $$
 \begin{aligned}

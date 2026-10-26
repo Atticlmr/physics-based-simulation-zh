@@ -28,7 +28,7 @@ $$
 N_\mathbf{i}(\mathbf{x}_p) = N\left(\frac{x_p - x_i}{h}\right) \cdot N\left(\frac{y_p - y_j}{h}\right) \cdot N\left(\frac{z_p - z_k}{h}\right).
 $$
 
-线性插值计算高效、易于实现，在流体仿真中的 FLIP {{#cite brackbill1988flip}} {{#cite bridson2015fluid}} 里被广泛使用。然而，当应用于 MPM 时，它存在两个严重问题：
+线性插值计算高效、易于实现，在流体仿真的 FLIP {{#cite brackbill1988flip}} {{#cite bridson2015fluid}} 中被广泛使用。然而，当应用于 MPM 时，它存在两个严重问题：
 
 1. 其梯度 $\nabla N(x)$ **不连续**，导致力的计算不稳定且带有噪声。
 2. 当粒子靠近网格单元边界时，$w_{\mathbf{i}p}$ 变小而 $\nabla w_{\mathbf{i}p}$ 仍然很大，从而引发称为**跨单元不稳定性**的数值不稳定。

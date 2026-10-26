@@ -1,6 +1,6 @@
 # 案例研究：塑性材料模型*
 
-**本讲作者：[Chang Yu](https://changyu.io/)，加州大学洛杉矶分校*
+*本讲作者：[Chang Yu](https://changyu.io/)，加州大学洛杉矶分校*
 
 在上一章“二维两块弹性体碰撞”中，我们用 PIC 传输格式实现了一个最简的物质点法（Material Point Method，MPM）仿真。在此基础上，本案例研究将展示如何以极小的额外工作量把该系统扩展到高级塑性材料的仿真。
 
@@ -14,11 +14,11 @@
 
 我们在计算域内放置一个[静态球体碰撞体](sphere_sdf.md)，它与下落的沙粒通过摩擦接触相互作用。碰撞体边界用<strong>有符号距离函数（Signed Distance Function，SDF）</strong>表示，并施加接触约束与库仑摩擦。
 
-我们对原始的 PIC 格式进行扩展，引入 [APIC 传输格式](apic_transfer.md)，以获得更高的精度并减少数值耗散。
+我们扩展原始的 PIC 格式，引入 [APIC 传输格式](apic_transfer.md)，以获得更高的精度并减少数值耗散。
 
 ## 粘塑性材料模型
 
-**本节作者：[Žiga Kovačič](https://zzigak.github.io)，康奈尔大学*
+*本节作者：[Žiga Kovačič](https://zzigak.github.io)，康奈尔大学*
 
 此外，我们在[二维粘塑性条](2d_viscoplastic_bars.md)中演示了一个**粘塑性**材料模型，它在传统塑性理论的基础上引入了率相关行为。该模型可刻画牙膏或高粘性流体这类材料——它们对变形的抵抗取决于加载速率。
 

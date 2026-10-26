@@ -98,8 +98,8 @@ dPdF=Simplify[dPdS1.dSdF0];
 ```
 注意，Mathematica 中的 'Direction->-1' 表示从较大值一侧取极限趋向较小的极限值。Mathematica 的计算结果将以奇异值与
 $\hat{\mathbf{P}}$ 表示。随后即可据此写出公式，在代码中实现它们。
-{{#cite stomakhin2012energetically}} 给出了结果：$\frac{\partial\mathbf{P}}{\partial\mathbf{F}}(\bm{\Sigma})$（尺寸 $9
-\times 9$ matrix) is permuted to be a block diagonal matrix with diagonal blocks $\mathbf{A}^{3\times 3},\mathbf{B}_{12}^{2\times 2},\mathbf{B}_{13}^{2\times 2},\mathbf{B}_{23}^{2\times 2}$），其中
+{{#cite stomakhin2012energetically}} 给出了结果：$\frac{\partial\mathbf{P}}{\partial\mathbf{F}}(\bm{\Sigma})$（尺寸为 $9
+\times 9$ 的矩阵）经置换后成为分块对角矩阵，对角块为 $\mathbf{A}^{3\times 3},\mathbf{B}_{12}^{2\times 2},\mathbf{B}_{13}^{2\times 2},\mathbf{B}_{23}^{2\times 2}$，其中
 $$
 \mathbf{A} = \left(
 \begin{array}{ccc}
@@ -139,7 +139,7 @@ $$
 $$
 注意，若 $\hat{\Psi}$ 在奇异值置换下不变，则当
 $\sigma_i \rightarrow \sigma_j$ 时有 $\hat{\Psi}_{,\sigma_i} \rightarrow \hat{\Psi}_{,\sigma_j}$。因此，
-只要实现得当，对于各向同性模型第一项通常可以稳健地计算。而若当
+只要实现得当，对于各向同性模型，第一项通常可以稳健地计算。而若当
 $\sigma_i +\sigma_j \rightarrow 0$ 时 $\hat{\Psi}_{,\sigma_i} + \hat{\Psi}_{,\sigma_j} \rightarrow 0$，则另一分式也可稳健计算。
 但这一条件通常并不成立，因为那意味着本构模型难以从退化或翻转的构形中恢复。
 因此，该项在某些情形下会无界。

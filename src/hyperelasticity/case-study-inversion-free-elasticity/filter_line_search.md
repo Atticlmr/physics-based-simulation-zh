@@ -52,7 +52,7 @@ $$
 ```python
 {{#include ../../solid-sim-tutorial/6_inv_free/time_integrator.py:apply_filter}}
 ```
-并确保所有新增的数据结构与修改过的函数都在时间积分器中得到反映，我们最终就可以仿真[移动边界条件](../../boundary-treatments/moving-boundary-conditions/mov_DBC.md)中的压缩方块示例，并保证无翻转（参见 {{ref: fig:lec15:compress_square_inv_free}}）。
+在确保所有新增的数据结构与修改过的函数都在时间积分器中得到反映之后，我们最终就可以仿真[移动边界条件](../../boundary-treatments/moving-boundary-conditions/mov_DBC.md)中的压缩方块示例，并保证无翻转（参见 {{ref: fig:lec15:compress_square_inv_free}}）。
 
 <figure>
     <center>

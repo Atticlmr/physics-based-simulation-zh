@@ -1,6 +1,6 @@
 ## 二面角弯曲约束
 
-拉伸约束维持了布料网格的结构完整性，却无法阻止其发生不自然的折叠。弯曲阻力决定了布料如何起皱、如何悬垂，它通过约束相邻三角形之间的夹角来建模。
+拉伸约束维持了布料网格的结构完整性，却无法阻止其发生不自然的折叠。弯曲阻力决定了布料如何起皱、如何悬垂，可以通过约束相邻三角形之间的夹角来建模。
 
 ### 理论：二面角约束形式
 
@@ -8,7 +8,7 @@
 
 <figure><img src="bending.png"><figcaption><b>{{fig}}{fig:bending_constraints}[弯曲约束]</b> 图中给出了 $\mathbb{R}^3$ 中一对三角形的二面角。</figcaption></figure>
 
-> **{{def}}{def:cloth:bending_constraint}[Dihedral Angle Bending Constraint]**
+> **{{def}}{def:cloth:bending_constraint}[二面角弯曲约束]**
  由四个顶点构成的两个相邻三角形，其弯曲约束函数 $C_{\text{bend}}$ 为：
  $$
  {{numeq}}{eq:cloth:bend_constraint}
@@ -30,7 +30,7 @@
 
 对于近乎不可拉伸的曲面，可以使用等距弯曲模型 {{#cite bergou2006quadratic}}。该模型基于弯曲能量的局部海森矩阵，给出了一种稳健的表述。
 
-该模型为网格的每条内部边 $\bm{e}_0$ 考虑一个模板（stencil），它由与该边相邻的两个三角形的四个顶点组成，记作 $\bm{p}_0, \bm{p}_1, \bm{p}_2, \bm{p}_3$。该模板的局部弯曲能量定义为一个二次型：
+该模型对网格的每条内部边 $\bm{e}_0$ 定义一个模板（stencil），由与该边相邻的两个三角形的四个顶点组成，记作 $\bm{p}_0, \bm{p}_1, \bm{p}_2, \bm{p}_3$。该模板的局部弯曲能量定义为一个二次型：
 
 $$
 {{numeq}}{eq:cloth:iso_energy}
@@ -45,7 +45,7 @@ $$
 \frac{\partial C_{\text{bend}}}{\partial \bm{p}_i} = \sum_{j \in \{0,1,2,3\}} \bm{Q}_{ij} \bm{p}_j
 $$
 
-对于希望布料按等距方式（即不发生拉伸）变形的服装仿真，该模型尤为有效。
+在希望布料按等距方式（即不发生拉伸）变形的服装仿真中，该模型尤为有效。
 
 ### 实现：弯曲约束求解器
 

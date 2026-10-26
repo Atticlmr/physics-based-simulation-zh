@@ -12,7 +12,7 @@ $$
     F_{ij} = \frac{\partial \phi_i}{\partial X_j} = \frac{\partial x_i}{\partial X_j}, \quad i, j = 1, \ldots, d.
 $$
 
-我们可以针对式 {{eqref: eq:lec12:motion_eg1}} 所给的变形映射计算变形梯度，其结果是单位矩阵。类似地，对于式 {{eqref: eq:lec12:motion_eg2}} 中的变形映射，变形梯度 $\mathbf{F}$ 等于 $\mathbf{R}$。在这两种情形下，物体都没有发生真正的变形，它们只是刚体变换的例子。除非有意追求某种艺术效果（例如卡通风格），否则这样的变形梯度不应在材料内部产生任何内力。
+我们可以针对式 {{eqref: eq:lec12:motion_eg1}} 所给的变形映射计算变形梯度，其结果是单位矩阵。类似地，对于式 {{eqref: eq:lec12:motion_eg2}} 中的变形映射，变形梯度 $\mathbf{F}$ 等于 $\mathbf{R}$。在这两种情形下，物体都没有发生真正的变形，这两种情形都只是刚体变换的例子。除非有意追求某种艺术效果（例如卡通风格），否则这样的变形梯度不应在材料内部产生任何内力。
 
 <figure>
     <center>

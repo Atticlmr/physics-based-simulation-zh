@@ -1,4 +1,4 @@
-**本章作者：[Žiga Kovačič](https://zzigak.github.io)，康奈尔大学*
+*本章作者：[Žiga Kovačič](https://zzigak.github.io)，康奈尔大学*
 
 # 基于位置的动力学框架
 

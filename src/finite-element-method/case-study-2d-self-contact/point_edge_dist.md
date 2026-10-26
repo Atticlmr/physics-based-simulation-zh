@@ -27,7 +27,7 @@ $$
 ```python
 {{#include ../../solid-sim-tutorial/7_self_contact/distance/PointEdgeDistance.py:PE_val_grad}}
 ```
-可以验证，点-边距离函数在处处为 $C^1$ 连续，包括在不同分段之间的交界处。对于点-点情形，我们有：
+可以验证，点-边距离函数处处为 $C^1$ 连续，包括在不同分段之间的交界处。对于点-点情形，我们有：
 
 {{imp}}{imp:lec21:PointPointDistance}[点-点距离计算，PointPointDistance.py]
 ```python

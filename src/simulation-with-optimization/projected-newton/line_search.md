@@ -1,8 +1,8 @@
 ## 线搜索
 
-在迭代最小化方法中，线搜索是一种用于在每次迭代中只选取步长的一部分的技术，它保证目标能量在新点处下降。
+在迭代最小化方法中，线搜索在每次迭代中只取步长的一部分，以保证目标能量在新点处下降。
 
-具体来说，对于牛顿法，{{ref: alg:lec1:newton_method_IE}} 中的第 4 行由 \\(x^i \leftarrow x\\) 改为 \\(x^i \leftarrow x^i + \alpha (x - x^i)\\)，其中 \\(\alpha \in (0,1]\\) 是步长，它对能量的下降至关重要。这引出了两个关键问题：这样的 \\(\alpha\\) 总是存在吗？以及 \\(\alpha\\) 是如何计算的？
+具体来说，对于牛顿法，{{ref: alg:lec1:newton_method_IE}} 中的第 4 行由 \\(x^i \leftarrow x\\) 改为 \\(x^i \leftarrow x^i + \alpha (x - x^i)\\)，其中 \\(\alpha \in (0,1]\\) 是步长，它对能量的下降至关重要。这引出了两个关键问题：这样的 \\(\alpha\\) 总是存在吗？\\(\alpha\\) 是如何计算的？
 
 > **{{rem}}{rem:lec3:line_search_existence}[\(\alpha\) 的存在性]** 设目标能量 \\(E(x)\\) 在 \\(x^i\\) 处光滑且 \\(\nabla E(x^i) \neq 0\\)，若搜索方向 \\(p=x-x^i\\) 为下降方向，即 \\(p^T \nabla E(x^i) < 0\\)，则存在 \\(\alpha > 0\\) 使得 \\(E(x^i + \alpha p) < E(x^i)\\)。
 

@@ -6,7 +6,7 @@
 
 本讲没有明确讨论摩擦，因为其在连续情形下的力定义已在 [边界条件与摩擦接触](../../governing-equations/boundary-conditions-and-frictional-contact/BC_and_fric.md) 中介绍。其积分近似可以按照与法向接触力类似的方式进行（详见 [案例研究：二维摩擦自接触](../2d-frictional-self-contact/2d_self_fric.md)）。
 
-在推导过程中，我们还注意到，我们从强形式走向优化时间积分实现所走的路线，即：
+在推导过程中，我们还注意到，从强形式走向优化时间积分实现的路线，即：
 
 $$
 \begin{aligned}

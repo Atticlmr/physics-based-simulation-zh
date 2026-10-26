@@ -41,7 +41,7 @@ $$
 > **{{rem}}{rm:lec9:contact_force_magnitude}[接触力大小]**
 > $\lambda_k = -w_k\frac{\partial b}{\partial d_k}$ 之所以是接触力大小，是因为在节点 $k$ 处接触力为 $-w_k \nabla_{\mathbf{x}_k} b(d_k(x)) = -w_k\frac{\partial b}{\partial d_k} \nabla_{\mathbf{x}_k} d_k(x)$。因此，由于 $\frac{\partial b}{\partial d_k} < 0$ 且 $\|\nabla_{\mathbf{x}_k} d_k(x)\| = 1$，有 $\lambda_k = \| -w_k \frac{\partial b}{\partial d_k} \nabla_{\mathbf{x}_k} d_k(x) \| = -w_k\frac{\partial b}{\partial d_k}$。
 
-为使优化高效而稳定，向静摩擦过渡时的摩擦力-速度关系可以通过将 $f$ 替换为光滑近似函数来加以光滑化。参照 IPC，我们采用
+为使优化高效而稳定，向静摩擦过渡时的摩擦力-速度关系可以通过将 $f$ 替换为光滑近似函数来实现光滑化。参照 IPC，我们采用
 $$
 \begin{align}
 f_1(y) =

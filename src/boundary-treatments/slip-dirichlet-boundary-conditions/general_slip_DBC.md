@@ -6,7 +6,7 @@ $$
     \mathbf{n}_i^T (\mathbf{x}_i - \mathbf{x}_i') = 0,
 $$
 其中 $\mathbf{n}_i$ 是节点 $i$ 所滑移平面的法向，$\mathbf{x}_i'$ 是该平面上的任意一点。 
-如式 {{eqref: eq:lec5:BC_dx}} 附近所讨论的，若在时间步开始时节点 $i$ 已位于该平面上，则约束简化为
+如式 {{eqref: eq:lec5:BC_dx}} 附近的讨论所述，若在时间步开始时节点 $i$ 已位于该平面上，则约束简化为
 $$
     \mathbf{n}_i^T \Delta \mathbf{x}_i = 0.
 $$

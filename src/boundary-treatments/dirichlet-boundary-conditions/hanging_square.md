@@ -3,7 +3,7 @@
 本节可执行的 Python 工程见 [https://github.com/phys-sim-book/solid-sim-tutorial](https://github.com/phys-sim-book/solid-sim-tutorial) 中的 `2_dirichlet` 文件夹。 
 [MUDA](https://github.com/MuGdxy/muda) GPU 实现见 [https://github.com/phys-sim-book/solid-sim-tutorial-gpu](https://github.com/phys-sim-book/solid-sim-tutorial-gpu) 中的 `simulators/2_dirichlet` 文件夹。
 
-重力势能具有
+重力势能具有如下形式
 $$
     P(x) = -x^T Mg, \quad \nabla P(x) = -Mg, \quad \text{and} \quad \nabla^2 P(x) = 0,
 $$

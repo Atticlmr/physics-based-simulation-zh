@@ -30,7 +30,7 @@ $$
 
 这样就无需显式求值 $\nabla w_{ip}$，而是使用已经聚合在 $\mathbf{C}_p$ 中的仿射行为。
 
-**塑性流动**也在这一阶段施加，以把更新后的变形梯度投影回由材料屈服准则所定义的可容许空间。这一过程称为**返回映射**，它保证材料满足塑性极限，将在[下一讲](../beyond-elasticity-plasticity-and-viscosity/mpm_plasticity.md)中详细讨论。
+**塑性流动**也在这一阶段施加，以把更新后的变形梯度投影回由材料屈服准则定义的可容许空间。这一过程称为**返回映射**，它保证材料满足塑性极限，将在[下一讲](../beyond-elasticity-plasticity-and-viscosity/mpm_plasticity.md)中详细讨论。
 
 ### 位置更新
 

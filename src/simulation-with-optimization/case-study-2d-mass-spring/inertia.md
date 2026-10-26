@@ -4,7 +4,7 @@
 \\[
     E_I(x) = \frac{1}{2}\\|x - \tilde{x}^n \\|_M^2, \quad \nabla E_I(x) = M(x - \tilde{x}^n), \quad \text{and} \quad \nabla^2 E_I(x) = M,
 \\]
-它可以直接实现：
+这可以直接实现：
 
 {{imp}}{imp:lec4:inertia_energy}[InertiaEnergy.py]
 ```python

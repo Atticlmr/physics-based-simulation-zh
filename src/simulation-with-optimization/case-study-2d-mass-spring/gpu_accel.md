@@ -1,6 +1,6 @@
 ## GPU 加速仿真
 
-**本节作者：[Zhaofeng Luo](https://roushelfy.github.io/)，卡内基梅隆大学*
+*本节作者：[Zhaofeng Luo](https://roushelfy.github.io/)，卡内基梅隆大学*
 
 现在我们将二维质点-弹簧仿真器改写为利用 GPU 加速的版本。
 我们没有直接编写 [CUDA](https://developer.nvidia.com/cuda-toolkit)，而是借助 [MUDA](https://github.com/MuGdxy/muda)——一个为 GPU 加速计算提供简洁接口的轻量级库。
@@ -31,7 +31,7 @@ GPU 加速仿真器的架构与 Python 版本相似。所有函数名与变量�
 ```cpp
 {{#include ../../solid-sim-tutorial-gpu/simulators/1_mass_spring/src/MassSpringEnergy.cu:definition}}
 ```
-如上段代码所示，能量值及其导数，以及所有必要的参数，都存储在一个 `DeviceBuffer` 对象中；该对象是 MUDA 库实现的 CUDA 设备内存的封装。这使我们能够直接在 GPU 上执行计算，而无需在 CPU 与 GPU 之间传输数据。
+如上文代码所示，能量值及其导数，以及所有必要的参数，都存储在一个 `DeviceBuffer` 对象中；该对象是 MUDA 库实现的 CUDA 设备内存的封装。这使我们能够直接在 GPU 上执行计算，而无需在 CPU 与 GPU 之间传输数据。
 
 ### 牛顿法
 
@@ -41,7 +41,7 @@ GPU 加速仿真器的架构与 Python 版本相似。所有函数名与变量�
 ```cpp
 {{#include ../../solid-sim-tutorial-gpu/simulators/1_mass_spring/src/simulator.cu:step_forward}}
 ```
-在函数 `step_forward` 中，实现了带线搜索的投影牛顿法，它在 GPU 上执行必要的计算，同时在 CPU 上控制整个流程。
+函数 `step_forward` 实现了带线搜索的投影牛顿法，它在 GPU 上执行必要的计算，同时在 CPU 上控制整个流程。
 此处任何以 `device_` 开头的变量都是 GPU 上的 `DeviceBuffer` 对象。为调试而打印 `DeviceBuffer` 中的值时，常见做法是将数据传回 CPU，或调用 `uti.cu` 中实现的 `display_vec` 函数（该函数在 GPU 上并行调用 `printf`）。
 
 `update_x` 函数把节点的位置更新给所有 Energy 类，并将更新后的位置传回 CPU 用于渲染：

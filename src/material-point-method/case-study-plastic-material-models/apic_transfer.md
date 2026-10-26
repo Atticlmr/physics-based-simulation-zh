@@ -18,7 +18,7 @@
 {{#include ../../solid-sim-tutorial/11_mpm_plastic/simulator.py:apic_g2p}}
 ```
 
-这里，$D$ 是使用二次 B 样条插值函数时的一个常数因子：
+这里，$D$ 是使用二次 B 样条插值函数时的常数因子：
 
 {{imp}}{imp:lec30:D_def}[APIC 所用二次 B 样条的常数 D，simulator.py]
 ```python

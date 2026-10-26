@@ -70,7 +70,7 @@ $$
 \boldsymbol{\epsilon}_\text{corrected} = \boldsymbol{\epsilon}_\text{trial} + \frac{v_\mathrm{vol}}{d} \mathbf{I},
 $$
 >
-> 其中 $d$ 为空间维数。这样，后续的压缩就能**抵消此前的体积增大**，而不会被弹性地抵抗。在下面的代码中，`diff_log_J` 提供了该体积修正项，它由行列式对数差的累加计算得到。
+> 其中 $d$ 为空间维数。这样，后续的压缩就能**抵消此前的体积增大**，而不会受到弹性抵抗。在下面的代码中，`diff_log_J` 提供了该体积修正项，它由行列式对数差的累加计算得到。
 
 {{imp}}{imp:lec30:drucker_prager}[Drucker-Prager 弹塑性返回映射，simulator.py]
 ```python

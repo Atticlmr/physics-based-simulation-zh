@@ -52,7 +52,7 @@ $$
 
 至此，我们对三维障碍势能有了两种离散化方式。为了在实践中同时使用它们，可以利用两者的线性组合，其系数通常可设为 $1/2$。
 
-对于点-三角形距离与边-边距离，它们同样都是具有解析解的小型优化问题，可以表示为分段光滑函数，就像式 {{eqref: eq:lec21:pw_pe_dist}} 中的二维点-边距离那样。
+点-三角形距离与边-边距离同样都是具有解析解的小型优化问题，可以表示为分段光滑函数，就像式 {{eqref: eq:lec21:pw_pe_dist}} 中的二维点-边距离那样。
 例如在点-三角形情形中，表达式可通过判断该点在三角形平面上的投影落在哪个区域来确定。
 
 > {{def}}{def:lec24:pt_dist}[三维点-三角形距离] 点 $\mathbf{x}_p$ 与顶点为 $\mathbf{x}_{t1}$、$\mathbf{x}_{t2}$ 和 $\mathbf{x}_{t3}$ 的三角形之间的距离可定义为 $$ \text{arg}\min_{\beta_1,\beta_2} \|\mathbf{x}_p - (\mathbf{x}_{t1} + \beta_1 (\mathbf{x}_{t2} - \mathbf{x}_{t1}) + \beta_2 (\mathbf{x}_{t3} - \mathbf{x}_{t1})) \| \quad \text{s.t.} \quad \beta_1,\beta_2 \geq 0, \ \beta_1+\beta_2 \leq 1 $$

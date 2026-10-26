@@ -1,6 +1,6 @@
 # 线性系统
 
-**本讲作者：[Tianyi Xie](https://xpandora.github.io/)，加利福尼亚大学洛杉矶分校*
+*本讲作者：[Tianyi Xie](https://xpandora.github.io/)，加利福尼亚大学洛杉矶分校*
 
 在基于优化的仿真中，求解线性系统是牛顿类方法的基础步骤。在每次迭代时（参见 {{ref: alg:lec3:PN_method_IE}}），我们需要计算搜索方向 $p$：
 

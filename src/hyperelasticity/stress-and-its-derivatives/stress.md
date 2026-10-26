@@ -17,7 +17,7 @@ $$
 > $\mathbf{P}$ 在离散意义下是一个与 $\mathbf{F}$ 维数相同的小矩阵。
 
 
-在研究材料受应力作用下的行为时，人们会使用各种定义，其中**柯西应力**在工程领域尤为常用。柯西应力记为 $\sigma(\cdot,t):\Omega^t\rightarrow\mathbb{R}^{d\times d}$，它可通过如下关系在数学上与第一类 Piola-Kirchhoff 应力张量 $\mathbf{P}$ 相联系：
+在研究材料在应力作用下的行为时，人们会使用各种定义，其中**柯西应力**在工程领域尤为常用。柯西应力记为 $\sigma(\cdot,t):\Omega^t\rightarrow\mathbb{R}^{d\times d}$，它可通过如下关系在数学上与第一类 Piola-Kirchhoff 应力张量 $\mathbf{P}$ 相联系：
 $$
 \sigma = \frac{1}{J} \mathbf{P} \mathbf{F}^T = \frac{1}{\text{det}(\mathbf{F})} \frac{\partial \Psi}{\partial \mathbf{F}} \mathbf{F}^T.
 $$

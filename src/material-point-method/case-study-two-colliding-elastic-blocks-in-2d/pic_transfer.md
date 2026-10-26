@@ -36,7 +36,7 @@
 {{#include ../../solid-sim-tutorial/10_mpm_elasticity/simulator.py:g2p}}
 ```
 
-最后，粒子位置通过使用辛欧拉时间积分的平流来更新。
+最后，通过辛欧拉时间积分对粒子位置进行平流更新。
 
 {{imp}}{imp:lec29:particle_update}[粒子状态更新，simulator.py]
 ```python

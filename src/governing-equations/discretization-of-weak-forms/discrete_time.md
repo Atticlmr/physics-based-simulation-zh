@@ -1,7 +1,7 @@
 ## 离散时间
 
 
-时间离散把 $\mathbf{A}$ 与我们的自由度（DOF）$\mathbf{x}$ 联系起来。在连续框架下，$\mathbf{A}(\mathbf{X}, t) = \frac{\partial^2 \mathbf{x}}{\partial t^2}(\mathbf{X}, t)$。现在，如第一章所述，我们把时间划分为若干小间隔 $t^0, t^2, \ldots, t^n, \ldots$。利用有限差分公式，我们可以方便地用 $\mathbf{x}$ 近似 $\mathbf{A}$。
+时间离散把 $\mathbf{A}$ 与自由度（DOF）$\mathbf{x}$ 联系起来。在连续框架下，$\mathbf{A}(\mathbf{X}, t) = \frac{\partial^2 \mathbf{x}}{\partial t^2}(\mathbf{X}, t)$。现在，如第一章所述，我们把时间划分为若干小间隔 $t^0, t^2, \ldots, t^n, \ldots$。利用有限差分公式，我们可以方便地用 $\mathbf{x}$ 近似 $\mathbf{A}$。
 
 
 例如，采用后向欧拉法：

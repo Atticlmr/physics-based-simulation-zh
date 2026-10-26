@@ -14,7 +14,7 @@ $$
 $$
 如前所述，该解由对 $\mathbf{F}^n$ 的极分解给出；借助极分解 SVD $\mathbf{F}^n=\mathbf{U}^n \mathbf{\Sigma}^n (\mathbf{V}^n)^T$，可得 $\mathbf{R}^n = \mathbf{U}^n (\mathbf{V}^n)^T$。然而，共旋线性弹性仍然不是旋转不变的，因为 $\mathbf{R}^n$ 在优化过程中不随 $\mathbf{F}$ 变化。因此，它不适用于大变形。
 
-对于旋转不变的弹性模型，计算机图形学领域的从业者为视觉计算的目的对其进行了简化。例如，在能量密度函数中只保留 $\mu$ 项而忽略 $\lambda$ 项，以获得更高的计算效率：
+对于旋转不变的弹性模型，计算机图形学领域的从业者出于视觉计算的需要对其进行了简化。例如，在能量密度函数中只保留 $\mu$ 项而忽略 $\lambda$ 项，以获得更高的计算效率：
 $$
     \Psi_\text{R}(\mathbf{F}) = \frac{\mu}{4} \| \mathbf{F}^T \mathbf{F} - \mathbf{I} \|^2_\text{F}, \quad \text{or} \quad \Psi_\text{ARAP}(\mathbf{F}) = \mu \sum_i^d (\sigma_i - 1)^2, \quad \text{etc}.
     {{numeq}}{eq:lec13:simplified_models}

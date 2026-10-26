@@ -18,7 +18,7 @@ $$
 $\mathbf{F}$ 的极 SVD 提供了一种更直观的理解变形的方式。若以 $\sigma_i = \mathbf{\Sigma}_{ii}$ 记**主拉伸**，我们可以把 $\mathbf{F}$ 理解为一系列变换的组合：首先是旋转 $\mathbf{V}^T$，接着沿各轴按 $\sigma_i$ 缩放各维度，最后再作一次旋转 $\mathbf{U}$。该分解适用于所有可能的 $\mathbf{F}$。
 
 
-极 SVD 还使我们能用 $\sigma_i$ 更方便地表达各向同性应变能密度函数。例如，式 {{eqref: eq:lec13:strain_density_intuitive}} 中我们凭直觉给出的公式可以改写为：
+极 SVD 还使我们能更方便地用 $\sigma_i$ 表达各向同性应变能密度函数。例如，式 {{eqref: eq:lec13:strain_density_intuitive}} 中我们凭直觉给出的公式可以改写为：
 
 $$
 \Psi(\mathbf{F}) = \hat{\Psi}(\mathbf{\Sigma}) = \frac{\mu}{4}\sum_{i=1}^d (\sigma_{i}^2 - 1)^2 + \frac{\lambda}{2}\left(\prod_{i=1}^d \sigma_i - 1\right)^2,

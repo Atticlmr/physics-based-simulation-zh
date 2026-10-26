@@ -9,7 +9,7 @@ $$
 \end{aligned}
 {{numeq}}{eq:lec19:discrete_weak_form_BE}
 $$
-本章我们先在线性有限元的背景下讨论形函数 $N_{\hat{a}}$。这一探讨将有助于理解[无翻转弹性](../../hyperelasticity/case-study-inversion-free-elasticity/inv_free_elasticity.md)一节中详述的实现。
+本章我们先结合线性有限元讨论形函数 $N_{\hat{a}}$。这一探讨将有助于理解[无翻转弹性](../../hyperelasticity/case-study-inversion-free-elasticity/inv_free_elasticity.md)一节中详述的实现。
 
 我们将专门关注单纯形有限元。在二维情形下，2-单纯形就是三角形，而本书自始至终都用三角形网格把固体域离散为一组互不相交的三角形单元。
 

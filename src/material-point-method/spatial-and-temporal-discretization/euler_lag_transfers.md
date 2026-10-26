@@ -46,7 +46,7 @@ $$
 \mathbf{f}_\mathbf{i}^n = - \sum_p V_p^0 \, \frac{\partial \Psi_p}{\partial \mathbf{F}}\left(\mathbf{F}_p^n\right) \, (\mathbf{F}_p^n)^T \, \nabla w_{\mathbf{i}p}^n.
 $$
 
-该形式表达了邻近粒子的弹性应力贡献对网格节点 $i$ 的作用力。它完全依赖于当前时间步已知的粒子属性与插值权重。
+该形式表示邻近粒子的弹性应力对网格节点 $i$ 的作用力。它完全依赖于当前时间步已知的粒子属性与插值权重。
 
 ### 网格更新
 

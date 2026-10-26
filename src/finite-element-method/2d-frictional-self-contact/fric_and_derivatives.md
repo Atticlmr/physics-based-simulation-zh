@@ -1,6 +1,6 @@
 ## 摩擦能量及其导数
 
-在预先计算出每个摩擦点-边对的 $\lambda$、$r$ 与 $\mathbf{n}$ 之后，我们便可以方便地计算摩擦势能的值（{{ref: imp:lec22:fric_val}}）、梯度（{{ref: imp:lec22:fric_grad}}）与海森矩阵（{{ref: imp:lec22:fric_hess}}），并把它们加入优化之中。
+在预先计算出每个摩擦点-边对的 $\lambda$、$r$ 与 $\mathbf{n}$ 之后，我们便可以计算摩擦势能的值（{{ref: imp:lec22:fric_val}}）、梯度（{{ref: imp:lec22:fric_grad}}）与海森矩阵（{{ref: imp:lec22:fric_hess}}），并把它们加入优化之中。
 
 {{imp}}{imp:lec22:fric_val}[摩擦能量值，FrictionEnergy.py]
 ```python

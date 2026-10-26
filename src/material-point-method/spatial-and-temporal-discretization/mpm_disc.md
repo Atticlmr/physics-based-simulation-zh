@@ -1,6 +1,6 @@
 # 空间与时间离散化
 
-**本讲作者：[Chang Yu](https://changyu.io/)，加州大学洛杉矶分校*
+*本讲作者：[Chang Yu](https://changyu.io/)，加州大学洛杉矶分校*
 
 在第一讲[离散空间与时间](../../simulation-with-optimization/discrete-space-and-time/discrete_space_time.md)中，我们介绍了固体对象的各种表示方式。我们没有从经典连续体方程出发，而是直接把弹性仿真表述为离散的代数问题，此前的讨论主要集中于基于网格的纯拉格朗日格式。
 

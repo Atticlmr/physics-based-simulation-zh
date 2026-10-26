@@ -20,7 +20,7 @@
 {{#include ../../solid-sim-tutorial/9_reduced_DOF/time_integrator.py:search_dir}}
 ```
 
-这些改动使我们能够运行方块下落的 ABD 版本仿真：
+这些改动使我们能够运行 ABD 版本的方块下落仿真：
 
 <figure>
     <center>

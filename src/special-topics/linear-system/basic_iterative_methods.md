@@ -18,7 +18,7 @@ $$
 
 ### Gauss-Seidel 法
 
-Gauss-Seidel 法在 Jacobi 法的基础上改进：一旦某个最新值可用，就立即使用它。这意味着同一迭代内，每个新得到的 $x_i^{(k+1)}$ 会立刻用于后续更新。更新规则为：
+Gauss-Seidel 法在 Jacobi 法的基础上改进：一旦某个分量的新值可用，就立即使用它。这意味着同一迭代内，每个新得到的 $x_i^{(k+1)}$ 会立刻用于后续更新。更新规则为：
 $$
 x^{(k+1)} = (D + L)^{-1} (b - U x^{(k)}),
 {{numeq}}{eq: lec31:forward_gs}
@@ -54,7 +54,7 @@ $$
     G_{BGS} &= I - (D + U)^{-1}A,
 \end{aligned}
 $$
-分别对应 Jacobi、前向 Gauss-Seidel 与反向 Gauss-Seidel 迭代。这些方法的收敛性取决于谱半径 $\rho(G)$（即 $G$ 的特征值绝对值的最大者）。当且仅当 $\rho(G) < 1$ 时方法收敛。
+分别对应 Jacobi、前向 Gauss-Seidel 与反向 Gauss-Seidel 迭代。这些方法的收敛性取决于谱半径 $\rho(G)$（即 $G$ 的特征值绝对值的最大者）。当且仅当 $\rho(G) < 1$ 时，方法收敛。
 
 两类方法收敛的一个充分条件是 $A$ **严格对角占优**（即对所有 $i$ 有 $|A_{ii}| > \sum_{j \neq i} |A_{ij}|$）。对于 Gauss-Seidel 法，只要 $A$ 对称正定（SPD），收敛性同样有保证。
 

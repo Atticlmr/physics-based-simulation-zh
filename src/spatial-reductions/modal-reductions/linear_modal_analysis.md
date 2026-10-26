@@ -1,6 +1,6 @@
 ## 线性模态分析
 
-我们从最简单的情形开始探讨模型降维：线弹性 {{eqref: eq:lec13:strain_energy_lin}}。尽管它局限于小变形，这一情形却能为子空间仿真的核心概念提供清晰而直观的入门。
+我们从最简单的情形开始探讨模型降维：线弹性 {{eqref: eq:lec13:strain_energy_lin}}。尽管它局限于小变形，这一情形仍能为子空间仿真的核心概念提供清晰而直观的入门。
 
 ### 振动模态的物理
 
@@ -30,7 +30,7 @@ $$
 > *   **特征向量** $\mathbf{\psi}_i \in \mathbb{R}^{3n}$ 是一个**模态形状**。它是一个描述某个特定振动模态空间形态的向量。
 > *   **特征值** $\lambda_i \in \mathbb{R}$ 是对应模态 $\mathbf{\psi}_i$ 的**固有频率**的平方。
 
-方程 $\mathbf{K}\mathbf{\psi}_i = \lambda_i \mathbf{M}\mathbf{\psi}_i$ 实质上说明：模态变形 $\mathbf{\psi}_i$ 是特殊的——若物体被变形为该形状，则弹性回复力（$\mathbf{K}\mathbf{\psi}_i$）与产生该形状正弦振动所需的惯性力（$\mathbf{M}\mathbf{\psi}_i$）恰好成正比。
+方程 $\mathbf{K}\mathbf{\psi}_i = \lambda_i \mathbf{M}\mathbf{\psi}_i$ 实质上说明：模态变形 $\mathbf{\psi}_i$ 是特殊的——若把物体变形为该形状，则弹性回复力（$\mathbf{K}\mathbf{\psi}_i$）与产生该形状正弦振动所需的惯性力（$\mathbf{M}\mathbf{\psi}_i$）恰好成正比。
 
 **模态**就是弹性力与惯性力完全对齐的那些形状。低特征值对应低能模态，它们对视觉动画最为重要。
 
