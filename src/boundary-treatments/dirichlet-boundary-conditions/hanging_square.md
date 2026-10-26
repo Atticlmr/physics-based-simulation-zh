@@ -7,7 +7,7 @@
 $$
     P(x) = -x^T Mg, \quad \nabla P(x) = -Mg, \quad \text{and} \quad \nabla^2 P(x) = 0,
 $$
-它可以被平凡地实现：
+它的实现很直接：
 
 {{imp}}{imp:lec5:GravityEnergy}[GravityEnergy.py]
 ```python

@@ -81,12 +81,12 @@ $$ \hat{E}(\mathbf{q}) = E(\mathbf{Uq}) = \int_{\Omega_0} \Psi(\mathbf{F}(\mathb
 $$ \hat{\mathbf{f}}_{int}(\mathbf{q}) =  \nabla_{\mathbf{q}}E  = \int_{\Omega_0} \nabla_\mathbf{q}\Psi(\mathbf{F(\mathbf{Uq}, X)}) \, dV.  $$
 这表明约化力是*约化能量密度梯度*在物体体积上的积分。投影 $\mathbf{U}^T$ 通过链式法则隐含在导数 $\nabla_\mathbf{q}$ 之中。
 
-与其通过累加所有有限单元的贡献来精确计算这个积分，求积法改为用极少数 $T$ 个预先选定的采样点（或"求积点"）$\mathbf{X}_j \in \Omega_0$ 上的加权和来近似它：
+与其通过累加所有有限单元的贡献来精确计算这个积分，求积法改为用极少数 $T$ 个预先选定的采样点（或“求积点”）$\mathbf{X}_j \in \Omega_0$ 上的加权和来近似它：
 
 $$ \hat{\mathbf{f}}_{int}(\mathbf{q}) \approx \sum_{j=1}^{T} w_j \nabla_{\mathbf{q}}\Psi(\mathbf{F}(\mathbf{Uq}, X))  \bigg|_{\mathbf{X}=\mathbf{X}_j}.
  {{numeq}}{eq:lec25:cuabture_force}$$
 
-求积点的数目 $T$ 可以小得惊人（通常与 $r$ 同量级），却仍能给出高度精确的近似。这些点 $\mathbf{X}_j$ 及其非负权重 $w_j$ 在一个预计算步骤中被优化，使得在一组具有代表性的"训练"位形上，近似结果与真实的约化力最吻合。
+求积点的数目 $T$ 可以小得惊人（通常与 $r$ 同量级），却仍能给出高度精确的近似。这些点 $\mathbf{X}_j$ 及其非负权重 $w_j$ 在一个预计算步骤中被优化，使得在一组具有代表性的“训练”位形上，近似结果与真实的约化力最吻合。
 
 运行时，求值约化力与刚度只需遍历这 $T$ 个点。代价变得与原始网格分辨率 $n$ 无关，从而使复杂非线性材料的快速仿真成为可能。
 

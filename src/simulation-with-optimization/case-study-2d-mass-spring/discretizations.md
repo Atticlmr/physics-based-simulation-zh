@@ -14,7 +14,7 @@
     <center>
     <img src="square_mesh_4x4.jpg" width="200">
     </center>
-    <figcaption><b>{{fig}}{fig:lec4:square_mesh_4x4}</b> 调用上文「方形网格生成」脚本中定义的 <code>generate(1.0, 4)</code> 所生成的 $4\times 4$ 方形网格。 </figcaption>
+    <figcaption><b>{{fig}}{fig:lec4:square_mesh_4x4}</b> 调用上文“方形网格生成”脚本中定义的 <code>generate(1.0, 4)</code> 所生成的 $4\times 4$ 方形网格。 </figcaption>
 </figure>
 
 在时间离散方面，我们采用的方法是隐式欧拉法。在第 \(n\) 个时间步中需要最小化的增量势能可表示如下：

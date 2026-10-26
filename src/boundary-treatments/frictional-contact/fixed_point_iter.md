@@ -1,6 +1,6 @@
 ## 不动点迭代
 
-为获得完全隐式摩擦的解，我们可以迭代地交替进行如下两项：一是固定 $\lambda$ 与 $T$ 的非线性优化
+为获得完全隐式摩擦的解，我们可以迭代地交替执行以下两步：一是固定 $\lambda$ 与 $T$ 的非线性优化
 $$
 \begin{align}
    & \min_{x}: E(x, \{\lambda, T\}) = \frac{1}{2} \|x - \tilde{x}^{n}\|^2_M +  \Delta t^2 \left( P_e(x) + P_b(x) + P_f(x, \{\lambda, T\}) \right) \nonumber\\ &\text{s.t.} \quad Ax = b,

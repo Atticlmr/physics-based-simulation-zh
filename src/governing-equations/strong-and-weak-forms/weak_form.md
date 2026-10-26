@@ -10,7 +10,7 @@ $$
 \end{aligned}
 {{numeq}}{eq:lec16:weak_form}
 $$
-这里我们记 $\mathbf{A}(\mathbf{X}, t) = \frac{\partial \mathbf{V}}{\partial t}(\mathbf{X}, t)$。在不深究有限元分析细节的前提下，我们断言弱形式与强形式充分等价：因为方程 {{eqref: eq:lec16:weak_form}} 要求对任意的 $\mathbf{Q}(\cdot, t)$ 都成立，而求解弱形式所给出的解是原问题的一个"足够好"的解。
+这里我们记 $\mathbf{A}(\mathbf{X}, t) = \frac{\partial \mathbf{V}}{\partial t}(\mathbf{X}, t)$。在不深究有限元分析细节的前提下，可以认为弱形式与强形式完全等价：因为方程 {{eqref: eq:lec16:weak_form}} 要求对任意的 $\mathbf{Q}(\cdot, t)$ 都成立，而求解弱形式所给出的解是原问题的一个“足够好”的解。
 
 采用指标记法，其中 $A_i$ 表示向量值函数 $\mathbf{A} : \Omega^0 \rightarrow \mathbb{R}^d$ 的第 $i$ 个分量，$A_{i,j}$ 表示 $\frac{\partial A_i}{\partial X_j}$，我们可以把方程 {{eqref: eq:lec16:weak_form}} 改写为
 $$
