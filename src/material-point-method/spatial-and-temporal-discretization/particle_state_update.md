@@ -13,7 +13,7 @@ $$
 \left( \mathbf{I} + \Delta t \sum_i \mathbf{v}_i^{n+1} \nabla (w_{ip}^n)^T \right) \mathbf{F}_p^n.
 $$
 
-在 **MLS-MPM** @@hu2018moving 与 **APIC** @@jiang2015affine 中，变形梯度的更新可以利用 P2G 与 G2P 传输过程中已经计算出的仿射速度矩阵 $\mathbf{C}_p$ 更紧凑地重写。
+在 **MLS-MPM** {{#cite hu2018moving}} 与 **APIC** {{#cite jiang2015affine}} 中，变形梯度的更新可以利用 P2G 与 G2P 传输过程中已经计算出的仿射速度矩阵 $\mathbf{C}_p$ 更紧凑地重写。
 
 回顾局部仿射速度场：
 

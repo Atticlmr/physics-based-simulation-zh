@@ -58,7 +58,7 @@ $$
 >
 > 当颗粒先经历弹性膨胀、再经历塑性投影时，这种效应会导致体积持续膨胀。此后任何压缩都会产生人为的弹性惩罚，从而得到错误的材料响应。
 >
-> 为修正这一点，我们采用 @@tampubolon2017multi 所述的体积修正处理，引入逐颗粒的标量累加量 $v_\mathrm{vol}$，用以跟踪塑性投影所引起的**对数体积变化**：
+> 为修正这一点，我们采用 {{#cite tampubolon2017multi}} 所述的体积修正处理，引入逐颗粒的标量累加量 $v_\mathrm{vol}$，用以跟踪塑性投影所引起的**对数体积变化**：
 >
 > $$
 v_\mathrm{vol}^{n+1} = v_\mathrm{vol}^n - \log \det \mathbf{F}_\mathrm{E}^{n+1} + \log \det \mathbf{F}_\mathrm{trial}.
