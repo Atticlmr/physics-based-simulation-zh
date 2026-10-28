@@ -4,7 +4,7 @@
 
 具体来说，对于牛顿法，{{ref: alg:lec1:newton_method_IE}} 中的第 4 行由 \\(x^i \leftarrow x\\) 改为 \\(x^i \leftarrow x^i + \alpha (x - x^i)\\)，其中 \\(\alpha \in (0,1]\\) 是步长，它对能量的下降至关重要。这引出了两个关键问题：这样的 \\(\alpha\\) 总是存在吗？\\(\alpha\\) 是如何计算的？
 
-> **{{rem}}{rem:lec3:line_search_existence}[\(\alpha\) 的存在性]** 设目标能量 \\(E(x)\\) 在 \\(x^i\\) 处光滑且 \\(\nabla E(x^i) \neq 0\\)，若搜索方向 \\(p=x-x^i\\) 为下降方向，即 \\(p^T \nabla E(x^i) < 0\\)，则存在 \\(\alpha > 0\\) 使得 \\(E(x^i + \alpha p) < E(x^i)\\)。
+> **{{rem}}{rem:lec3:line_search_existence}[α 的存在性]** 设目标能量 \\(E(x)\\) 在 \\(x^i\\) 处光滑且 \\(\nabla E(x^i) \neq 0\\)，若搜索方向 \\(p=x-x^i\\) 为下降方向，即 \\(p^T \nabla E(x^i) < 0\\)，则存在 \\(\alpha > 0\\) 使得 \\(E(x^i + \alpha p) < E(x^i)\\)。
 
 > **{{met}}{met:lec3:backtracking}[回溯线搜索]** 给定一个下降方向，我们可以从 \\(1\\) 开始不断将其折半，直到新位置处的能量小于当前能量，从而找到一个合理较大的 \\(\alpha\\)（见 {{ref: alg:lec3:line_search}}）。<figure>
     <center>
