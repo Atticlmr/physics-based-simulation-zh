@@ -2,7 +2,7 @@
 
 现在我们在二维中实现仿射体动力学（ABD），用于[方块下落](../../boundary-treatments/filter-line-search/square_drop.md)仿真的新胡克（neo-Hookean）版本。这只需对标准增量势能接触（Incremental Potential Contact，IPC）仿真代码做少量修改。完整实现见我们的[固体仿真教程](https://github.com/phys-sim-book/solid-sim-tutorial)中的 `9_reduced_DOF` 文件夹。
 
-我们首先引入一个计算约化基的函数。在 ABD 中，我们只考虑仿射变形。因此，我们用 `method=1`（多项式基）与 `order=1`（线性基）来提取线性基：
+我们首先引入一个计算约化基的函数。在仿射体动力学（ABD）中，我们只考虑仿射变形。因此，我们用 `method=1`（多项式基）与 `order=1`（线性基）来提取线性基：
 
 {{imp}}{imp:lec25:compute_reduced_basis}[计算约化基，utils.py]
 ```python
@@ -20,13 +20,13 @@
 {{#include ../../solid-sim-tutorial/9_reduced_DOF/time_integrator.py:search_dir}}
 ```
 
-这些改动使我们能够运行 ABD 版本的方块下落仿真：
+这些改动使我们能够运行仿射体动力学（ABD）版本的方块下落仿真：
 
 <figure>
     <center>
         <img src="abd_sim.gif">
-        <figcaption><b>{{fig}}{fig:lec25:abd_sim}</b> 方块下落到地面上的 ABD 仿真。</figcaption>
+        <figcaption><b>{{fig}}{fig:lec25:abd_sim}</b> 方块下落到地面上的仿射体动力学（ABD）仿真。</figcaption>
     </center>
 </figure>
 
-在这个例子中，我们调低了刚度参数，使物体更软，以突出 ABD 与标准 IPC 之间的差异。蓝色网格是原始网格（同时也用于碰撞），而红色三角形可视化了约化的自由度。
+在这个例子中，我们调低了刚度参数，使物体更软，以突出仿射体动力学（ABD）与标准增量势能接触（IPC）之间的差异。蓝色网格是原始网格（同时也用于碰撞），而红色三角形可视化了约化的自由度。

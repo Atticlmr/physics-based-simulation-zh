@@ -10,7 +10,7 @@
 
 粘塑性模型建立在 <strong>St. Venant-Kirchhoff（StVK）</strong>弹性模型之上，并在**对数（Hencky）应变空间**中表述。StVK 模型利用变形梯度的奇异值分解（Singular Value Decomposition，SVD）由对数应变计算应力。
 
-给定变形梯度 $\mathbf{F}$ 及其 SVD $\mathbf{F} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^T$，**对数应变**定义为：
+给定变形梯度 $\mathbf{F}$ 及其奇异值分解（SVD） $\mathbf{F} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^T$，**对数应变**定义为：
 $$\boldsymbol{\epsilon} = \log(\boldsymbol{\Sigma})$$
 
 **偏斜对数应变**为：
@@ -22,11 +22,11 @@ $$\hat{\boldsymbol{\epsilon}} = \boldsymbol{\epsilon} - \frac{1}{d}\text{tr}(\bo
 StVK 格式下的**偏斜应力**（柯西应力偏量）为：
 $$\hat{\boldsymbol{s}} = 2\mu \hat{\boldsymbol{\epsilon}}$$
 
-其中 $\mu$ 为剪切模量。应力在主坐标系中计算，然后利用 SVD 基旋转回材料坐标系。
+其中 $\mu$ 为剪切模量。应力在主坐标系中计算，然后利用奇异值分解（SVD）基旋转回材料坐标系。
 
 ### 率相关塑性模型
 
-粘塑性模型与 Drucker-Prager 模型类似，在**对数应变空间**中利用变形梯度的 SVD 来表述。关键区别在于屈服条件现在包含一个率相关项。
+粘塑性模型与 Drucker-Prager 模型类似，在**对数应变空间**中利用变形梯度的奇异值分解（SVD）来表述。关键区别在于屈服条件现在包含一个率相关项。
 
 **屈服函数**用于检验偏斜应力的模是否超过率相关的屈服应力：
 $$y = \|\hat{\boldsymbol{s}}\| - \sqrt{\frac{2}{3}} \sigma_y(\dot{\epsilon}_p)$$
@@ -49,7 +49,7 @@ $$\|\hat{\boldsymbol{s}}^{n+1}\| = \|\hat{\boldsymbol{s}}_\text{trial}\| - \frac
 
 这实际上以与粘性阻力成比例的因子减小了应力修正量，使材料更难快速变形。
 
-粘塑性返回映射利用 SVD 与对数应变实现：
+粘塑性返回映射利用奇异值分解（SVD）与对数应变实现：
 
 ```python
 @ti.func
@@ -81,7 +81,7 @@ def viscoplastic_return_mapping_stvk_2d(F_trial, mu_p, lam_p, yield_stress_p, pl
     return F_result
 ```
 
-返回映射由 SVD 计算对数应变，提取其偏斜分量，检验屈服条件；若发生屈服，则施加粘性修正以减小应力更新量。随后对修正后的应变取指数，用来重建弹性变形梯度。
+返回映射由奇异值分解（SVD）计算对数应变，提取其偏斜分量，检验屈服条件；若发生屈服，则施加粘性修正以减小应力更新量。随后对修正后的应变取指数，用来重建弹性变形梯度。
 
 ### 双条仿真设置
 

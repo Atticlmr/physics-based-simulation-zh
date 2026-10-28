@@ -18,7 +18,7 @@ $$
 $$
     \hat{\Psi}_{\text{NH}}(\bm{\Sigma}) = \frac{\mu}{2} \left(\sum_i^d \sigma_{i}^2 - d\right) - \mu \ln(J) + \frac{\lambda}{2} \ln^2(J).
 $$
-> 因此，我们可以先对 $\mathbf{F} = \mathbf{U} \bm{\Sigma} \mathbf{V}$ 执行 SVD，并由此得到：
+> 因此，我们可以先对 $\mathbf{F} = \mathbf{U} \bm{\Sigma} \mathbf{V}$ 执行奇异值分解（SVD），并由此得到：
 $$
     \hat{P}_{ii} = \mu \left(\sigma_i - \frac{1}{\sigma_i}\right) + \lambda \ln(J) \frac{1}{\sigma_i}
 $$

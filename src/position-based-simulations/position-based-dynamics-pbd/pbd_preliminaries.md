@@ -41,4 +41,4 @@ $$
 > **{{rem}}{rem:lagrangian:quaternion_normalization}[四元数归一化]**
 > 由于数值积分误差，四元数 $\bm{q}_i$ 可能偏离单位长度。每次积分步骤之后都必须重新归一化四元数，以维持有效的转动状态。
 
-最后，物体间的相互作用与物理限制通过<strong>完整约束（holonomic constraints）</strong>来建模，这类约束只依赖位置与姿态，而不依赖速度！约束是以等式和不等式形式给出的运动学限制，用于限制物体之间的相对运动。<strong>等式（双侧）</strong>约束的形式为 $C_j(\bm{p}, \bm{q}) = 0$，而<strong>不等式（单侧）</strong>约束为 $C_j(\bm{p}, \bm{q}) \ge 0$。在经典动力学中，这些约束通过计算约束力并将其加入方程 {{eqref:eq:lagrangian:particle_motion}} 中的 $\bm{f}_i$ 来满足。PBD 从根本上改变的正是这种处理约束的机制。
+最后，物体间的相互作用与物理限制通过<strong>完整约束（holonomic constraints）</strong>来建模，这类约束只依赖位置与姿态，而不依赖速度！约束是以等式和不等式形式给出的运动学限制，用于限制物体之间的相对运动。<strong>等式（双侧）</strong>约束的形式为 $C_j(\bm{p}, \bm{q}) = 0$，而<strong>不等式（单侧）</strong>约束为 $C_j(\bm{p}, \bm{q}) \ge 0$。在经典动力学中，这些约束通过计算约束力并将其加入方程 {{eqref:eq:lagrangian:particle_motion}} 中的 $\bm{f}_i$ 来满足。基于位置的动力学（PBD）从根本上改变的正是这种处理约束的机制。

@@ -46,14 +46,14 @@ $$
 
 ### 扩展基于位置的动力学（XPBD）
 
-尽管方程 {{eqref:eq:pbd:stiffness}} 中的刚度表述把有效刚度与求解器迭代次数解耦，标准 PBD 仍存在一个根本局限：由此得到的材料刚度依然依赖于仿真时间步 $\Delta t$。被称为<strong>扩展基于位置的动力学（Extended Position Based Dynamics，XPBD）</strong>的扩展解决了这一问题，实现了真正与参数无关的刚度。
+尽管方程 {{eqref:eq:pbd:stiffness}} 中的刚度表述把有效刚度与求解器迭代次数解耦，标准基于位置的动力学（PBD）仍存在一个根本局限：由此得到的材料刚度依然依赖于仿真时间步 $\Delta t$。被称为<strong>扩展基于位置的动力学（Extended Position Based Dynamics，XPBD）</strong>的扩展解决了这一问题，实现了真正与参数无关的刚度。
 
-XPBD 由柔顺约束（compliant constraint）形式推导而来，并引入了柔度（compliance）这一概念，即刚度的倒数。
+扩展基于位置的动力学（XPBD）由柔顺约束（compliant constraint）形式推导而来，并引入了柔度（compliance）这一概念，即刚度的倒数。
 
 > **{{def}}{def:pbd:compliance}[柔度]**
-> 柔度 $\alpha \ge 0$ 是材料刚度 $k$ 的倒数，即 $\alpha = 1/k$。它描述材料在载荷作用下发生变形的倾向。在 XPBD 中，柔度 $\alpha = 0$ 对应无限刚硬（即硬）的约束。
+> 柔度 $\alpha \ge 0$ 是材料刚度 $k$ 的倒数，即 $\alpha = 1/k$。它描述材料在载荷作用下发生变形的倾向。在扩展基于位置的动力学（XPBD）中，柔度 $\alpha = 0$ 对应无限刚硬（即硬）的约束。
 
-XPBD 的核心思想是：不把拉格朗日乘子 $\lambda$ 视为每次迭代重新计算的临时量，而把它视为代表累积冲量的物理量，并以增量方式更新。在每次求解器迭代中，我们计算一个冲量增量 $\Delta\lambda$，把它加到该约束的总冲量 $\lambda$ 上。该增量的公式对方程 {{eqref:eq:solver:lambda}} 作如下修改：
+扩展基于位置的动力学（XPBD）的核心思想是：不把拉格朗日乘子 $\lambda$ 视为每次迭代重新计算的临时量，而把它视为代表累积冲量的物理量，并以增量方式更新。在每次求解器迭代中，我们计算一个冲量增量 $\Delta\lambda$，把它加到该约束的总冲量 $\lambda$ 上。该增量的公式对方程 {{eqref:eq:solver:lambda}} 作如下修改：
 $$
 {{numeq}}{eq:pbd:xpbd_delta_lambda}
 
@@ -71,10 +71,10 @@ $$
 $$
 
 > **{{rem}}{rem:pbd:xpbd_benefits}[对 XPBD 的解读]**
-> 方程 {{eqref:eq:pbd:xpbd_delta_lambda}} 分母中的 $+\hat{\alpha}$ 项起到限制修正冲量 $\Delta\lambda$ 幅值的作用。随着柔度 $\alpha$ 增大（即材料变软），$\hat{\alpha}$ 也随之增大，从而减小每次迭代施加的冲量。当柔度为零（$\alpha=0$）时，$\hat{\alpha}$ 项消失，$\Delta\lambda$ 的公式退化为方程 {{eqref:eq:solver:lambda}} 中标准的 PBD 表述。
+> 方程 {{eqref:eq:pbd:xpbd_delta_lambda}} 分母中的 $+\hat{\alpha}$ 项起到限制修正冲量 $\Delta\lambda$ 幅值的作用。随着柔度 $\alpha$ 增大（即材料变软），$\hat{\alpha}$ 也随之增大，从而减小每次迭代施加的冲量。当柔度为零（$\alpha=0$）时，$\hat{\alpha}$ 项消失，$\Delta\lambda$ 的公式退化为方程 {{eqref:eq:solver:lambda}} 中标准的基于位置的动力学（PBD）表述。
 
 > **{{rem}}{rem:pbd:xpbd_convention}[关于符号的说明]**
-> 在 PBD 的推导中，我们采用的约定是把修正量（$\Delta p_i$）显式地写成沿（$-\nabla_{p_i} C$）方向。为在 XPBD 中与这一选择保持一致，我们定义的累积乘子与原始论文中所用的符号相反。若你阅读原始论文或许多综述论文，请留意这一差异。
+> 在基于位置的动力学（PBD）的推导中，我们采用的约定是把修正量（$\Delta p_i$）显式地写成沿（$-\nabla_{p_i} C$）方向。为在扩展基于位置的动力学（XPBD）中与这一选择保持一致，我们定义的累积乘子与原始论文中所用的符号相反。若你阅读原始论文或许多综述论文，请留意这一差异。
 
 
-XPBD 的主要优势**不在于更快的收敛，而在于收敛到物理上一致、能正确反映用户设定柔度 $\alpha$ 的状态**，且与时间步或迭代次数无关。即使求解器被提前终止，系统仍在某种程度上表现出期望的柔软度，而不是人为的、不可控的柔度。这使材料行为更可预测，也更**稳健**。
+扩展基于位置的动力学（XPBD）的主要优势**不在于更快的收敛，而在于收敛到物理上一致、能正确反映用户设定柔度 $\alpha$ 的状态**，且与时间步或迭代次数无关。即使求解器被提前终止，系统仍在某种程度上表现出期望的柔软度，而不是人为的、不可控的柔度。这使材料行为更可预测，也更**稳健**。

@@ -109,7 +109,7 @@ $$
 > **运行时循环（每个时间步）：**
 > 1.  在完整空间中计算外力 $\mathbf{f}_{ext}$（例如来自重力、用户交互）。
 > 2.  把力投影到约化基上：$\mathbf{f}_{reduced} = \mathbf{U}^T\mathbf{f}_{ext}$。
-> 3.  对每个模态 $i=1, \dots, r$，求解其一维 ODE 方程 {{eqref:eq:lec26:linear_system_simple}} 以更新幅值 $q_i$。这可以用简单且稳定的隐式积分格式完成。
+> 3.  对每个模态 $i=1, \dots, r$，求解其一维常微分方程（Ordinary Differential Equation，ODE）方程 {{eqref:eq:lec26:linear_system_simple}} 以更新幅值 $q_i$。这可以用简单且稳定的隐式积分格式完成。
 > 4.  为渲染重建完整空间中的变形：$\mathbf{u} = \mathbf{U}\mathbf{q}$。
 
 计算量的节省是巨大的。我们不再求解一个庞大且耦合的 $3n \times 3n$ 系统，而是求解 $r$ 个极小且独立的一维方程，其中 $r$ 可能是 20-50，而 $3n$ 可能达到数万乃至数百万。

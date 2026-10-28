@@ -10,7 +10,7 @@ $$
 $$
     \mathbf{n}_i^T \Delta \mathbf{x}_i = 0.
 $$
-进而对行向量 $\mathbf{n}_i^T$ 作 SVD，得到
+进而对行向量 $\mathbf{n}_i^T$ 作奇异值分解（SVD），得到
 $$
     \mathbf{n}_i^T = \mathbf{U}_i \mathbf{S}_i \mathbf{V}_i^T = 1 \begin{bmatrix} 1 & 0 & 0\end{bmatrix} \begin{bmatrix} \mathbf{n}_i^T \\ \textbf{m}_i^T \\ \mathbf{l}_i^T \end{bmatrix},
     {{numeq}}{eq:lec6:BC_normal_SVD}

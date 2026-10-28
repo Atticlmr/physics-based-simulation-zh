@@ -2,7 +2,7 @@
 
 *本讲作者：[Chang Yu](https://changyu.io/)，加州大学洛杉矶分校*
 
-在上一章“二维两块弹性体碰撞”中，我们用 PIC 传输格式实现了一个最简的物质点法（Material Point Method，MPM）仿真。在此基础上，本案例研究将展示如何以极小的额外工作量把该系统扩展到高级塑性材料的仿真。
+在上一章“二维两块弹性体碰撞”中，我们用质点网格法（Particle-In-Cell，PIC）传输格式实现了一个最简的物质点法（Material Point Method，MPM）仿真。在此基础上，本案例研究将展示如何以极小的额外工作量把该系统扩展到高级塑性材料的仿真。
 
 本案例研究涵盖两个重要的塑性材料模型。首先，我们通过一个带球体碰撞体的沙子仿真来演示 [Drucker-Prager 弹塑性](drucker_prager.md)。随后，我们通过一个双条仿真来介绍[粘塑性材料模型](2d_viscoplastic_bars.md)。
 
@@ -14,7 +14,7 @@
 
 我们在计算域内放置一个[静态球体碰撞体](sphere_sdf.md)，它与下落的沙粒通过摩擦接触相互作用。碰撞体边界用<strong>有符号距离函数（Signed Distance Function，SDF）</strong>表示，并施加接触约束与库仑摩擦。
 
-我们扩展原始的 PIC 格式，引入 [APIC 传输格式](apic_transfer.md)，以获得更高的精度并减少数值耗散。
+我们扩展原始的质点网格法（PIC）格式，引入 [APIC 传输格式](apic_transfer.md)，以获得更高的精度并减少数值耗散。
 
 ## 粘塑性材料模型
 

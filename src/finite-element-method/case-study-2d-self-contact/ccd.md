@@ -14,11 +14,11 @@
 {{#include ../../solid-sim-tutorial/7_self_contact/distance/CCD.py:broad_phase}}
 ```
 
-为得到足够大且保守的碰撞时间（time of impact，TOI）估计，我们不能像在[过滤线搜索](../../hyperelasticity/case-study-inversion-free-elasticity/filter_line_search.md)中处理点-地面接触那样直接算出 TOI 再取其一部分。对接触图元对直接计算 TOI 需要在二维和三维中求解二次或三次方程求根问题，这类问题容易产生数值误差，尤其是当距离极小、构型在数值上退化时（例如三维中近乎平行的边-边对）。
+为得到足够大且保守的碰撞时间（time of impact，TOI）估计，我们不能像在[过滤线搜索](../../hyperelasticity/case-study-inversion-free-elasticity/filter_line_search.md)中处理点-地面接触那样直接算出碰撞时间（TOI）再取其一部分。对接触图元对直接计算碰撞时间（TOI）需要在二维和三维中求解二次或三次方程求根问题，这类问题容易产生数值误差，尤其是当距离极小、构型在数值上退化时（例如三维中近乎平行的边-边对）。
 
-因此，我们实现了加性连续碰撞检测方法（additive CCD，ACCD）{{#cite li2021codimensional}}：它沿搜索方向迭代地移动接触对，直到达到最小间隔距离，从而稳健地估计 TOI。
+因此，我们实现了加性连续碰撞检测方法（additive 连续碰撞检测（Continuous Collision Detection，CCD），ACCD）{{#cite li2021codimensional}}：它沿搜索方向迭代地移动接触对，直到达到最小间隔距离，从而稳健地估计碰撞时间（TOI）。
 
-以点-边对为例，ACCD 的关键思想是：给定当前位置 $\mathbf{p}$、$\mathbf{e}_0$、$\mathbf{e}_1$ 以及搜索方向 $\mathbf{d}_p$、$\mathbf{d}_{e0}$、$\mathbf{d}_{e1}$，其 TOI 可计算为
+以点-边对为例，加性连续碰撞检测（ACCD）的关键思想是：给定当前位置 $\mathbf{p}$、$\mathbf{e}_0$、$\mathbf{e}_1$ 以及搜索方向 $\mathbf{d}_p$、$\mathbf{d}_{e0}$、$\mathbf{d}_{e1}$，其碰撞时间（TOI）可计算为
 
 $$
 \alpha_\text{TOI} = \frac{\| \mathbf{p} - ((1-\lambda)\mathbf{e}_{0} + \lambda \mathbf{e}_{1}) \|}{\| \mathbf{d}_p - ((1-\lambda)\mathbf{d}_{e0} + \lambda \mathbf{d}_{e1}) \|}

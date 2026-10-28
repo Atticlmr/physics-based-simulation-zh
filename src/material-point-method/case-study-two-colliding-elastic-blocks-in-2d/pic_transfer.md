@@ -15,7 +15,7 @@
 ```
 
 
-在粒子到网格（P2G）传输过程中，我们使用二次 B 样条插值，把每个粒子的质量、动量与内力分配到其相邻的网格节点上。该过程遵循 PIC（Particle-In-Cell）格式，即粒子速度被直接传输到网格，而不存储仿射速度场。
+在粒子到网格（P2G）传输过程中，我们使用二次 B 样条插值，把每个粒子的质量、动量与内力分配到其相邻的网格节点上。该过程遵循质点网格法（Particle-In-Cell，PIC）（Particle-In-Cell）格式，即粒子速度被直接传输到网格，而不存储仿射速度场。
 
 {{imp}}{imp:lec29:p2g}[PIC 粒子到网格（P2G）传输，simulator.py]
 ```python
@@ -54,5 +54,5 @@
     <center>
     <img src="mpm_elastic_blocks_simulation_result.png">
     </center>
-    <figcaption><b>{{fig}}{fig:lec29:mpm_elastic_blocks_simulation_result}</b> <b>二维中两块弹性体碰撞的时间序列</b>。红、蓝两方块以相反速度相互接近，撞击时发生大幅度弹性变形，随后回弹并恢复形状。该仿真展示了 MPM 框架下对称的动量交换与弹性储能。 </figcaption>
+    <figcaption><b>{{fig}}{fig:lec29:mpm_elastic_blocks_simulation_result}</b> <b>二维中两块弹性体碰撞的时间序列</b>。红、蓝两方块以相反速度相互接近，撞击时发生大幅度弹性变形，随后回弹并恢复形状。该仿真展示了物质点法（MPM）框架下对称的动量交换与弹性储能。 </figcaption>
 </figure>

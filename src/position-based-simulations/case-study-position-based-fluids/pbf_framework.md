@@ -70,14 +70,14 @@ def build_hash_grid():
 
 ### 仿真结果
 
-完整的 PBF 实现通过几何约束展现了逼真的流体行为，呈现出不可压缩流动、表面张力效应以及流体与动态边界之间的复杂交互。
+完整的基于位置的流体（Position-Based Fluids，PBF）实现通过几何约束展现了逼真的流体行为，呈现出不可压缩流动、表面张力效应以及流体与动态边界之间的复杂交互。
 
 
 <figure>
     <center>
         <img src="two_side_fluid.gif">
     </center>
-        <figcaption><b>{{fig}}{fig:pbf:two_side_fluid}</b> 带移动边界的 PBF 流体双侧压缩，展示了不可压缩性与表面行为。</figcaption>
+        <figcaption><b>{{fig}}{fig:pbf:two_side_fluid}</b> 带移动边界的基于位置的流体（PBF）流体双侧压缩，展示了不可压缩性与表面行为。</figcaption>
 </figure>
 
 
@@ -87,5 +87,5 @@ def build_hash_grid():
     <center>
         <img src="one_side_fluid.gif">
     </center>
-        <figcaption><b>{{fig}}{fig:pbf:one_side_fluid}</b> PBF 流体在移动边界上的单侧压缩，展示了不可压缩性与表面行为。</figcaption>
+        <figcaption><b>{{fig}}{fig:pbf:one_side_fluid}</b> 基于位置的流体（PBF）流体在移动边界上的单侧压缩，展示了不可压缩性与表面行为。</figcaption>
 </figure>

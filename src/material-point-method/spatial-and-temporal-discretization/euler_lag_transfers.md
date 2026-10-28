@@ -26,7 +26,7 @@ $$
 \mathbf{v}_\mathbf{i} = \frac{(m \mathbf{v})_\mathbf{i}}{m_\mathbf{i}}.
 $$
 
-**内力（应力）传输**：在 MPM 中，力在网格节点上计算，[牛顿第二定律](../../simulation-with-optimization/discrete-space-and-time/newton_2nd_law.md)也在节点上应用。对于超弹性材料，内部弹性力既可由动量方程的[弱形式](../../governing-equations/strong-and-weak-forms/weak_form.md)导出，也可由[应变能](../../hyperelasticity/strain-energy/strain_energy.md)的梯度导出。当存在定义良好的能量密度函数时，通常更倾向于后者。
+**内力（应力）传输**：在物质点法（MPM）中，力在网格节点上计算，[牛顿第二定律](../../simulation-with-optimization/discrete-space-and-time/newton_2nd_law.md)也在节点上应用。对于超弹性材料，内部弹性力既可由动量方程的[弱形式](../../governing-equations/strong-and-weak-forms/weak_form.md)导出，也可由[应变能](../../hyperelasticity/strain-energy/strain_energy.md)的梯度导出。当存在定义良好的能量密度函数时，通常更倾向于后者。
 
 假设每个粒子 $p$ 处具有基于变形梯度的超弹性能量密度 $\Psi_p(\mathbf{F}_p)$，则系统的总势能为：
 
@@ -55,13 +55,13 @@ $$
 $$
 \hat{\mathbf{v}}_\mathbf{i}^{n+1} = \mathbf{v}_\mathbf{i}^n + \frac{\Delta t}{m_\mathbf{i}} (\mathbf{f}_\mathbf{i} + \mathbf{f}_\mathbf{i}^{\text{ext}}).
 $$
-这里用 $\hat{\mathbf{v}}_\mathbf{i}^{n+1}$ 表示网格更新后的速度，以区别于下一时间步 P2G 传输之后的网格速度，后者记作 $\mathbf{v}_\mathbf{i}^{n+1}$。
+这里用 $\hat{\mathbf{v}}_\mathbf{i}^{n+1}$ 表示网格更新后的速度，以区别于下一时间步粒子到网格（P2G）传输之后的网格速度，后者记作 $\mathbf{v}_\mathbf{i}^{n+1}$。
 
 [边界处理](../boundary-treatments/mpm_bc.md)也在这一阶段施加，将在后续课程中讨论。
 
 ### 网格到粒子（G2P）传输
 
-一旦网格速度 $\hat{\mathbf{v}}_\mathbf{i}^{n+1}$ 更新完毕，就需要把信息传回粒子。G2P 传输中要更新的主要量是粒子速度 $\mathbf{v}_p^{n+1}$，它将在[平流](./particle_state_update.md)步骤中使用。
+一旦网格速度 $\hat{\mathbf{v}}_\mathbf{i}^{n+1}$ 更新完毕，就需要把信息传回粒子。网格到粒子（G2P）传输中要更新的主要量是粒子速度 $\mathbf{v}_p^{n+1}$，它将在[平流](./particle_state_update.md)步骤中使用。
 
 最简单的方法是直接从网格插值速度：
 
@@ -73,29 +73,29 @@ $$
 
 ### 不同的传输方案
 
-传输方案定义了 **P2G** 与 **G2P** 如何协同工作，以不同方式在数值稳定性、能量守恒与物理真实性之间取得平衡。
+传输方案定义了 **粒子到网格（P2G）** 与 **网格到粒子（G2P）** 如何协同工作，以不同方式在数值稳定性、能量守恒与物理真实性之间取得平衡。
 
 > {{exp}}{exp:lec26:pic}[PIC，质点网格法] $$ $$
-**P2G**：粒子速度 $\mathbf{v}_p$ 通过下式传输到网格：
+**粒子到网格（P2G）**：粒子速度 $\mathbf{v}_p$ 通过下式传输到网格：
 $$
 (m\mathbf{v})_\mathbf{i} = \sum_p w_{\mathbf{i}p} \, m_p \mathbf{v}_p.
 $$
-**G2P**：粒子速度直接从网格插值：
+**网格到粒子（G2P）**：粒子速度直接从网格插值：
 $$
 \mathbf{v}_p^{n+1} = \sum_\mathbf{i} w_{\mathbf{i}p} \, \hat{\mathbf{v}}_\mathbf{i}^{n+1}.
 $$
-PIC 非常稳定且守恒线动量，但数值耗散严重、会丢失细尺度运动，并且不守恒角动量。
+质点网格法（PIC）非常稳定且守恒线动量，但数值耗散严重、会丢失细尺度运动，并且不守恒角动量。
 
 > {{exp}}{exp:lec26:flip}[FLIP，流体隐式粒子法] $$ $$
-**P2G**：与 PIC 相同。 $$ $$
-**G2P**：在 FLIP 中，粒子速度通过混合新插值得到的速度与时间步之间的速度变化来更新：
+**粒子到网格（P2G）**：与质点网格法（PIC）相同。 $$ $$
+**网格到粒子（G2P）**：在 FLIP 中，粒子速度通过混合新插值得到的速度与时间步之间的速度变化来更新：
 $$
 \mathbf{v}_p^{n+1} =
 \sum_\mathbf{i} w_{\mathbf{i}p} \, \hat{\mathbf{v}}_\mathbf{i}^{n+1}
 + \alpha \left( \mathbf{v}_p^n - \sum_\mathbf{i} w_{\mathbf{i}p} \, \mathbf{v}_\mathbf{i}^n \right),
 $$
-其中 $\alpha \in [0, 1]$ 为 **FLIP-PIC 混合因子**（$\alpha = 1$ 时恢复为完全的 FLIP，常用取值为 $\alpha = 0.99$）。由于 FLIP 只对速度变化量进行插值，数值耗散被有效缓解。 $$ $$
-然而需要注意的是，为保证粒子与网格之间的嵌入关系，粒子位置仍需用 PIC 的速度更新：
+其中 $\alpha \in [0, 1]$ 为 **FLIP-质点网格法（PIC）混合因子**（$\alpha = 1$ 时恢复为完全的 FLIP，常用取值为 $\alpha = 0.99$）。由于 FLIP 只对速度变化量进行插值，数值耗散被有效缓解。 $$ $$
+然而需要注意的是，为保证粒子与网格之间的嵌入关系，粒子位置仍需用质点网格法（PIC）的速度更新：
 $$
 \mathbf{x}_p^{n+1} = \mathbf{x}_p^n + \Delta t \sum_\mathbf{i} w_{\mathbf{i}p} \, \hat{\mathbf{v}}_\mathbf{i}^{n+1}.
 $$
@@ -106,12 +106,12 @@ FLIP 能在长时间尺度上保持系统能量与细尺度运动，因此很适
 $$
 \mathbf{v}_p(\mathbf{x}) = \mathbf{v}_p + \mathbf{C}_p (\mathbf{x} - \mathbf{x}_p).
 $$
-**P2G**：动量传输中包含了仿射运动：
+**粒子到网格（P2G）**：动量传输中包含了仿射运动：
 $$
 (m\mathbf{v})_\mathbf{i} = \sum_p w_{\mathbf{i}p} \, m_p \left( \mathbf{v}_p + \mathbf{C}_p (\mathbf{x}_\mathbf{i} - \mathbf{x}_p) \right).
 $$
 这使得粒子能够把线动量与角动量一并传输到网格。 $$ $$
-**G2P**：在网格更新之后，粒子速度与仿射矩阵由网格值重建：
+**网格到粒子（G2P）**：在网格更新之后，粒子速度与仿射矩阵由网格值重建：
 $$
 \mathbf{v}_p^{n+1} = \sum_\mathbf{i} w_{\mathbf{i}p} \, \hat{\mathbf{v}}_\mathbf{i}^{n+1},
 $$
@@ -126,4 +126,4 @@ $$
  **二次 B 样条**：$\mathbf{D}_p = \frac{1}{4} \Delta x^2 \mathbf{I}$。 $$ $$
  **三次 B 样条**：$\mathbf{D}_p = \frac{1}{3} \Delta x^2 \mathbf{I}$。 $$ $$
 因此，$\mathbf{D}_p^{-1}$ 只是一个常数缩放因子，无需对每个粒子重新计算。 $$ $$
-与 PIC 相比，APIC 通过仿射速度场捕捉局部旋转与剪切效应，显著降低了耗散，同时保持角动量。尽管它需要为每个粒子额外存储一个局部矩阵 $\mathbf{C}_p$，并计算粒子到网格的矩贡献，但实际开销并不大。
+与质点网格法（PIC）相比，仿射质点网格法（Affine Particle-In-Cell，APIC）通过仿射速度场捕捉局部旋转与剪切效应，显著降低了耗散，同时保持角动量。尽管它需要为每个粒子额外存储一个局部矩阵 $\mathbf{C}_p$，并计算粒子到网格的矩贡献，但实际开销并不大。

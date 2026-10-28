@@ -4,4 +4,4 @@
 
 随后我们讨论了纯网格碰撞处理固有的局限，例如法向不准确与离散间隙，从而说明为何需要采用粒子层面的摩擦接触形式。通过在网格层面把摩擦接触显式地表述为优化问题，并采用基于粒子的接触能量，我们给出了一种物理自洽且稳健的做法。具体来说，我们引入了一个两阶段格式：先计算自由运动的网格速度，再执行基于优化的摩擦接触修正，从而有效施加静摩擦，并在复杂接触场景中保持物理保真度。
 
-在接下来的两节中，我们将运用上述全部理论组件，实现一个实用、功能完整的 MPM 仿真。我们先从一个快速入门的示例开始：[**二维两块弹性体碰撞**](../case-study-two-colliding-elastic-blocks-in-2d/mpm_elastic_case_study.md)，展示基于 PIC 的最简单的 MPM 弹性体仿真。随后只需很少的额外工作，我们便引入 APIC 传输格式、沙的塑性以及基于 SDF 的碰撞体，构建一个更高级的[**二维沙仿真**](../case-study-plastic-material-models/mpm_plastic_models.md)。
+在接下来的两节中，我们将运用上述全部理论组件，实现一个实用、功能完整的物质点法（MPM）仿真。我们先从一个快速入门的示例开始：[**二维两块弹性体碰撞**](../case-study-two-colliding-elastic-blocks-in-2d/mpm_elastic_case_study.md)，展示基于质点网格法（Particle-In-Cell，PIC）的最简单的物质点法（MPM）弹性体仿真。随后只需很少的额外工作，我们便引入仿射质点网格法（Affine Particle-In-Cell，APIC）传输格式、沙的塑性以及基于有符号距离函数（SDF）的碰撞体，构建一个更高级的[**二维沙仿真**](../case-study-plastic-material-models/mpm_plastic_models.md)。

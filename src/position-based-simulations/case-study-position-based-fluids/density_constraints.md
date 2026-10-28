@@ -2,7 +2,7 @@
 
 ### 逐粒子密度约束
 
-PBF 的基本原理是确保每个流体粒子周围的密度保持恒定。给定粒子位置处的密度通过对其邻居进行基于核函数的求和来估计。
+基于位置的流体（Position-Based Fluids，PBF）的基本原理是确保每个流体粒子周围的密度保持恒定。给定粒子位置处的密度通过对其邻居进行基于核函数的求和来估计。
 
 位置为 $\bm{p}_i$ 的粒子 $i$ 的密度 $\rho_i$ 估计为：
 $$
@@ -22,7 +22,7 @@ C_i(\bm{p}_1, ..., \bm{p}_N) = \frac{\rho_i}{\rho_0} - 1
 $$
 该约束在 $C_i = 0$ 时得到满足。
 
-为求解该约束系统，PBF 为每个粒子计算位置修正 $\Delta \bm{p}_i$。按照基于位置的动力学（Position-Based Dynamics，PBD）方法，我们首先计算 $C_i$ 关于粒子 $k$ 位置的梯度：
+为求解该约束系统，基于位置的流体（PBF）为每个粒子计算位置修正 $\Delta \bm{p}_i$。按照基于位置的动力学（Position-Based Dynamics，PBD）方法，我们首先计算 $C_i$ 关于粒子 $k$ 位置的梯度：
 $$
 {{numeq}}{eq:pbf:constraint_gradient}
 \nabla_{\bm{p}_k} C_i = \frac{1}{\rho_0} \sum_{j} m_j \nabla_{\bm{p}_k} W(\bm{p}_i - \bm{p}_j, h) =
@@ -31,7 +31,7 @@ $$
 -\frac{m_k}{\rho_0} \nabla W(\bm{p}_i - \bm{p}_k, h) & \text{if } k \ne i
 \end{cases}
 $$
-标准 PBD 求解器使用公式 $\lambda_i = -C_i / (\sum_k \|\nabla_{\bm{p}_k} C_i\|^2)$ 为每个约束 $C_i$ 计算一个拉格朗日乘子 $\lambda_i$。粒子 $\Delta\bm{p}_i$ 的位置修正则来自其自身约束与邻居约束的共同影响。由于核函数梯度的对称性（$\nabla_{\bm{p}_i} W(\bm{p}_i - \bm{p}_j, h) = -\nabla_{\bm{p}_j} W(\bm{p}_i - \bm{p}_j, h)$），粒子 $i$ 的位置修正最终得到一个简洁高效的更新规则：
+标准基于位置的动力学（PBD）求解器使用公式 $\lambda_i = -C_i / (\sum_k \|\nabla_{\bm{p}_k} C_i\|^2)$ 为每个约束 $C_i$ 计算一个拉格朗日乘子 $\lambda_i$。粒子 $\Delta\bm{p}_i$ 的位置修正则来自其自身约束与邻居约束的共同影响。由于核函数梯度的对称性（$\nabla_{\bm{p}_i} W(\bm{p}_i - \bm{p}_j, h) = -\nabla_{\bm{p}_j} W(\bm{p}_i - \bm{p}_j, h)$），粒子 $i$ 的位置修正最终得到一个简洁高效的更新规则：
 $$
 {{numeq}}{eq:pbf:position_correction}
 \Delta \bm{p}_i = \frac{1}{\rho_0} \sum_j (\lambda_i + \lambda_j) \nabla W(\bm{p}_i - \bm{p}_j, h)
@@ -47,7 +47,7 @@ $$
 
 ### 实现：核函数
 
-PBF 实现需要两种不同的核函数，各有特定用途：
+基于位置的流体（PBF）实现需要两种不同的核函数，各有特定用途：
 
 **用于密度估计的 Poly6 核**
 
@@ -87,7 +87,7 @@ Spiky 核的线性衰减在粒子彼此靠近时提供很强的排斥力，这�
 
 ### 实现：密度约束求解器
 
-密度约束求解器实现了理论章节中描述的三阶段 PBD 算法：
+密度约束求解器实现了理论章节中描述的三阶段基于位置的动力学（PBD）算法：
 
 **阶段 1：计算拉格朗日乘子**
 
@@ -116,7 +116,7 @@ def solve_density_constraints():
         lambdas[p_i] = -density_constraint / denominator if denominator > epsilon else 0.0
 ```
 
-该阶段为每个粒子计算约束违反量，并计算相应的拉格朗日乘子。CFM 正则化可防止粒子邻居很少时出现数值不稳定。
+该阶段为每个粒子计算约束违反量，并计算相应的拉格朗日乘子。约束力混合（CFM）正则化可防止粒子邻居很少时出现数值不稳定。
 
 **阶段 2：计算位置修正**
 

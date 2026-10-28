@@ -28,13 +28,13 @@ $$
 N_\mathbf{i}(\mathbf{x}_p) = N\left(\frac{x_p - x_i}{h}\right) \cdot N\left(\frac{y_p - y_j}{h}\right) \cdot N\left(\frac{z_p - z_k}{h}\right).
 $$
 
-线性插值计算高效、易于实现，在流体仿真的 FLIP {{#cite brackbill1988flip}} {{#cite bridson2015fluid}} 中被广泛使用。然而，当应用于 MPM 时，它存在两个严重问题：
+线性插值计算高效、易于实现，在流体仿真的 FLIP {{#cite brackbill1988flip}} {{#cite bridson2015fluid}} 中被广泛使用。然而，当应用于物质点法（MPM）时，它存在两个严重问题：
 
 1. 其梯度 $\nabla N(x)$ **不连续**，导致力的计算不稳定且带有噪声。
 2. 当粒子靠近网格单元边界时，$w_{\mathbf{i}p}$ 变小而 $\nabla w_{\mathbf{i}p}$ 仍然很大，从而引发称为**跨单元不稳定性**的数值不稳定。
 3. 函数的支撑域过窄，当相邻粒子没有共享足够的网格节点时容易发生**数值断裂**。
 
-由于这些问题，MPM 中通常避免使用线性插值，在固体仿真中尤其如此。
+由于这些问题，物质点法（MPM）中通常避免使用线性插值，在固体仿真中尤其如此。
 
 > {{exp}}{exp:lec26:quad}[二次 B 样条插值]
 更好的选择是**二次 B 样条**插值函数，它具有 $C^1$ 连续性（梯度连续）以及更宽的支撑域：
