@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>固体几何的表示 - 基于物理的仿真</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Google Scholar / citation metadata -->
+        <meta name="citation_title" content="Physics-Based Simulation">
+        <meta name="citation_author" content="Li, Minchen">
+        <meta name="citation_author" content="Jiang, Chenfanfu">
+        <meta name="citation_author" content="Luo, Zhaofeng">
+        <meta name="citation_author" content="Du, Wenxin">
+        <meta name="citation_author" content="Yu, Chang">
+        <meta name="citation_author" content="Kovačič, Žiga">
+        <meta name="citation_author" content="Xie, Tianyi">
+        <meta name="citation_publication_date" content="2026/03">
+        <meta name="citation_online_date" content="2026/03">
+        <meta name="citation_doi" content="10.5281/zenodo.20597655">
+        <meta name="citation_pdf_url" content="https://phys-sim-book.github.io/">
+        <meta name="citation_language" content="zh">
+        <meta name="citation_version" content="1.0.3">
+        <!-- MathJax 3：本地加载，离线可用 -->
+        <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+          },
+          options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+        };
+        </script>
+        <script defer src="../../js/mathjax/tex-svg-full.js"></script>
+
+        <meta name="description" content="一本关于基于物理的仿真的理论与算法的开源在线书籍。">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././theme/catppuccin.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "macchiato";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">基于物理的仿真</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h2 id="固体几何的表示"><a class="header" href="#固体几何的表示">固体几何的表示</a></h2>
+<p>在日常生活中，我们感受到的固体是连续的；但在计算机的数字世界里，一切都要用离散的数值来表示，于是便有了各种有趣的表示方法。</p>
+<p>一种方法是<strong>参数化</strong>。以三维球体为例，它可以写成 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathbf">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord">∣</span><span class="mspace"> </span><span class="mord">∥</span><span class="mord mathbf">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">c</span><span class="mord">∥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">}</span></span></span></span>，也就是以点 \( \mathbf{c} \) 为球心、\( r \) 为半径的球。这一思路并不限于球体：半空间、盒子、椭球、环面等形状，也都可以借助有符号距离等函数来刻画其<em>内部</em>，从而隐式地表示。然而，参数化方法在处理现实场景中常见的复杂几何时往往力不从心。近年来兴起的神经表示（neural representation）是这一局限的一个例外：借助神经网络，这类新方法有望高效地表示更复杂的几何形态。</p>
+<p>另一种方法是<strong>基于采样的表示</strong>：在物体表面和内部选取一批点。但只有点还不够——为了渲染、3D 打印等应用，我们通常还要建立点与点之间的连接关系，从而定义物体的边界。此外，跟踪这簇点随时间的位置变化，也有助于度量物体的变形。</p>
+<p>在连续介质力学中，物体被视为具有连续密度场的介质；而在数字表示中，这种连续性只能以离散的方式呈现，通常的做法是定义固体几何的<strong>连接关系</strong>。</p>
+<blockquote>
+<p><strong><a name="rem:lec1:other_solid_rep"></a>
+<em>注记 1.1.1 (其他固体表示方式).</em></strong>
+还有其他表示固体几何的方法，例如基于体素的方法。这类方法把空间划分为由小盒子（即体素）组成的三维网格，每个体素表示物体的一部分，类似于二维图像中的像素。基于体素的方法有多方面的优势。首先，它们可以作为离散的水平集表示，既能建模复杂几何，又能追踪其随时间的演化。每个体素都包含其相对于物体表面的位置信息，从而给出连续水平集函数的一种高效离散近似。这对于涉及表面演化、形状优化和碰撞检测的算法很有裨益。其次，基于体素的方法便于进行构造实体几何（Constructive Solid Geometry，CSG）运算。实体建模中的这一技术利用布尔运算符把较简单的形状组合成复杂的三维模型。体素化框架使得并、交、差等运算可以在体素网格上直接而高效地执行。这便于创建和修改复杂的形状。</p>
+</blockquote>
+<blockquote>
+<p><strong><a name="exp:lec1:mesh"></a>
+<strong>示例 1.1.1 (网格).</strong></strong>
+用边或三角形直接连接点来创建<strong>网格</strong>，是计算几何中一种常用的技术。这一概念如配图所示，其中左图与中图展示了两个不同的网格。值得注意的是，尽管这两个网格使用了相同的采样点（或节点），它们的连接关系不同，因而形状也不同。图中最右侧的网格演示了从一个形状到另一个形状的变换。该网格表示中图网格的一种变形，其做法是把它上半部分沿竖直方向压缩。<figure><center><img src="mesh.png" width="350"><figcaption><b><a name="fig:lec1:mesh"></a>
+图 1.1.1.</b> 网格</figcaption></center></figure></p>
+</blockquote>
+<blockquote>
+<p><strong><a name="exp:lec1:particle_grid"></a>
+<strong>示例 1.1.2 (粒子与网格).</strong></strong>
+如果在空间表示中引入均匀网格结构，我们就可以在每个节点位置记录固体物质的多少。这使我们能够利用采样点计算每个网格节点处的固体密度。该方法有助于量化固体在网格内的分布，也有助于在原始采样点之间建立连接网络。这一概念的直观演示见配图。图中采样点用绿色圆点表示。记录固体密度的网格节点用黑色圆圈表示。这些节点通过网格相连，以蓝色线条表示。<figure><center><img src="MPM.png" width="250"><figcaption><b><a name="fig:lec1:particle_grid"></a>
+图 1.1.2.</b> 粒子与网格</figcaption></center></figure></p>
+</blockquote>
+<p>在现代固体仿真领域，上述定义连接关系的方法至关重要。第一种方法通过由边或三角形构成的网格建立连接，是有限元方法（Finite Element Method，FEM）仿真器的基础。第二种方法利用均匀网格计算固体密度并建立连接，是物质点法（Material Point Method，MPM）仿真器不可或缺的组成部分 <a href="../../bibliography.html#jiang2016material">[Jiang et al. 2016]</a>。本书主要关注前一种方法，深入探讨有限元方法（FEM）的细节。有限元方法（FEM）基于网格的结构把复杂区域分解为较简单的单元，因而在处理复杂区域时尤为有效。这使有限元方法（FEM）成为可变形固体研究与仿真的核心工具，理解其精微之处对从事该领域研究的人至关重要。</p>
+<p>乍看之下，物质点法（MPM）中同时使用两种固体几何表示似乎冗余。然而这一双重途径赋予了物质点法（MPM）显著的优势，尤其是在仿真固体断裂这类动态事件时。在这类情形下，有限元方法（FEM）若要准确刻画损伤，就必须细致地修改定义原始连接关系的边与单元。相比之下，物质点法（MPM）能高效处理这些情形。均匀网格天然地容纳了断裂中物体各部分的分开：断裂节点处没有物质，相邻网格节点便自动断开连接。这一特性使物质点法（MPM）在应对固体拓扑变化方面表现出色。</p>
+<p>不过，就仿真精度控制而言，有限元方法（FEM）更胜一筹。有限元方法（FEM）直接在网格上运算，无需不断进行信息传递，因而能保证更高的精度。这种精度使有限元方法（FEM）成为精确仿真可变形固体的重要工具，而这正是本书的重点所在。</p>
+<p>在连接关系固定的前提下，把每个采样点的坐标合并为一个扩展向量（记作 \( x\in\mathbb{R}^{dn} \)，见下图），是描述某一具体几何构型的有效手段。在这个表示中，\(d\) 表示空间维度（1、2 或 3），\(n\) 表示点的总数。同样地，每个采样点上的速度、加速度和力等属性也可以合并为相应的扩展向量，分别记作 \(v\)、\(a\) 和 \(f\)。这种条理化的数据呈现方式不仅有助于全面理解各项参数及其相互关系，也使仿真过程的数学表述更加简洁。</p>
+<figure><center><img src="stacked_var.png" width="300"><figcaption><b><a name="fig:lec1:stacked_var"></a>
+图 1.1.3.</b> 堆叠的位置向量</center></figcaption></figure>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../simulation-with-optimization/discrete-space-and-time/discrete_space_time.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../simulation-with-optimization/discrete-space-and-time/newton_2nd_law.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../simulation-with-optimization/discrete-space-and-time/discrete_space_time.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../simulation-with-optimization/discrete-space-and-time/newton_2nd_law.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

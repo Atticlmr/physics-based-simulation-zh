@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>带可视化的仿真 - 基于物理的仿真</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Google Scholar / citation metadata -->
+        <meta name="citation_title" content="Physics-Based Simulation">
+        <meta name="citation_author" content="Li, Minchen">
+        <meta name="citation_author" content="Jiang, Chenfanfu">
+        <meta name="citation_author" content="Luo, Zhaofeng">
+        <meta name="citation_author" content="Du, Wenxin">
+        <meta name="citation_author" content="Yu, Chang">
+        <meta name="citation_author" content="Kovačič, Žiga">
+        <meta name="citation_author" content="Xie, Tianyi">
+        <meta name="citation_publication_date" content="2026/03">
+        <meta name="citation_online_date" content="2026/03">
+        <meta name="citation_doi" content="10.5281/zenodo.20597655">
+        <meta name="citation_pdf_url" content="https://phys-sim-book.github.io/">
+        <meta name="citation_language" content="zh">
+        <meta name="citation_version" content="1.0.3">
+        <!-- MathJax 3：本地加载，离线可用 -->
+        <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+          },
+          options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+        };
+        </script>
+        <script defer src="../../js/mathjax/tex-svg-full.js"></script>
+
+        <meta name="description" content="一本关于基于物理的仿真的理论与算法的开源在线书籍。">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././theme/catppuccin.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "macchiato";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">基于物理的仿真</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h2 id="带可视化的仿真"><a class="header" href="#带可视化的仿真">带可视化的仿真</a></h2>
+<p>在收集齐二维质点-弹簧仿真器所需的全部要素之后，下一步是实现仿真器。该实现将逐步构建，并包含可视化功能，以提升理解与参与感。</p>
+<p><a name="imp:lec4:simulator"></a>
+<strong>实现 4.5.1 (simulator.py).</strong></p>
+<pre><code class="language-python"># Mass-Spring Solids Simulation
+
+import numpy as np  # numpy for linear algebra
+import pygame       # pygame for visualization
+pygame.init()
+
+import square_mesh   # square mesh
+import time_integrator
+
+# simulation setup
+side_len = 1
+rho = 1000  # density of square
+k = 1e5     # spring stiffness
+initial_stretch = 1.4
+n_seg = 4   # num of segments per side of the square
+h = 0.004   # time step size in s
+
+# initialize simulation
+[x, e] = square_mesh.generate(side_len, n_seg)  # node positions and edge node indices
+v = np.array([[0.0, 0.0]] * len(x))             # velocity
+m = [rho * side_len * side_len / ((n_seg + 1) * (n_seg + 1))] * len(x)  # calculate node mass evenly
+# rest length squared
+l2 = []
+for i in range(0, len(e)):
+    diff = x[e[i][0]] - x[e[i][1]]
+    l2.append(diff.dot(diff))
+k = [k] * len(e)    # spring stiffness
+# apply initial stretch horizontally
+for i in range(0, len(x)):
+    x[i][0] *= initial_stretch
+
+# simulation with visualization
+resolution = np.array([900, 900])
+offset = resolution / 2
+scale = 200
+def screen_projection(x):
+    return [offset[0] + scale * x[0], resolution[1] - (offset[1] + scale * x[1])]
+
+time_step = 0
+square_mesh.write_to_file(time_step, x, n_seg)
+screen = pygame.display.set_mode(resolution)
+running = True
+while running:
+    # run until the user asks to quit
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    print('### Time step', time_step, '###')
+
+    # fill the background and draw the square
+    screen.fill((255, 255, 255))
+    for eI in e:
+        pygame.draw.aaline(screen, (0, 0, 255), screen_projection(x[eI[0]]), screen_projection(x[eI[1]]))
+    for xI in x:
+        pygame.draw.circle(screen, (0, 0, 255), screen_projection(xI), 0.1 * side_len / n_seg * scale)
+
+    pygame.display.flip()   # flip the display
+
+    # step forward simulation and wait for screen refresh
+    [x, v] = time_integrator.step_forward(x, e, v, m, l2, k, h, 1e-2)
+    time_step += 1
+    pygame.time.wait(int(h * 1000))
+    square_mesh.write_to_file(time_step, x, n_seg)
+
+pygame.quit()
+</code></pre>
+<p>对于仿真器中的二维可视化，我们使用 <a href="https://www.pygame.org/">Pygame library</a>。仿真从一个仅含单个方形的场景开始，该方形初始时在水平方向被拉伸。在仿真过程中，方形开始恢复其原始的水平尺寸。随后，由于惯性，它会在竖直方向拉伸，来回振荡，直到最终稳定在其静止形状，如（<a href="#fig:lec4:stretched_square_sim">图 4.5.1</a>）所示。</p>
+<figure>
+    <center>
+    <img src="stretched_square.jpg">
+    </center>
+    <figcaption><b><a name="fig:lec4:stretched_square_sim"></a>
+图 4.5.1.</b> 从左至右：初始被拉伸的方形仿真在初始、中间与最终静止时刻的帧。 </figcaption>
+</figure>
+<p>除存储节点位置 <code>x</code> 与边 <code>e</code> 之外，我们的仿真还需要为若干其他关键变量分配内存：</p>
+<ul>
+<li><strong>节点速度（<code>v</code>）</strong>：用于追踪每个节点随时间的运动。</li>
+<li><strong>质量（<code>m</code>）</strong>：节点质量通过把方形的总质量均匀分配到每个节点来计算。这是一种初步做法；有限元方法（Finite Element Method，FEM）或物质点法（Material Point Method，MPM）中更细致的节点质量计算方法将在后续章节中探讨。</li>
+<li><strong>边的静止长度平方（<code>l2</code>）</strong>：对计算质点-弹簧系统中的势能很重要。</li>
+<li><strong>弹簧刚度（<code>k</code>）</strong>：影响弹簧动力学的关键参数。</li>
+</ul>
+<p>为便于仿真器之外的可视化，我们支持将网格数据导出为 <code>.obj</code> 文件。这通过在仿真开始时以及每一帧调用 <code>write_to_file()</code> 函数来实现。该功能便于使用其他可视化软件来分析与展示仿真结果。</p>
+<p><a name="imp:lec4:square_mesh_output"></a>
+<strong>实现 4.5.2 (输出方形网格，square_mesh.py).</strong></p>
+<pre><code class="language-python">def write_to_file(frameNum, x, n_seg):
+    # Check if 'output' directory exists; if not, create it
+    if not os.path.exists('output'):
+        os.makedirs('output')
+
+    # create obj file
+    filename = f"output/{frameNum}.obj"
+    with open(filename, 'w') as f:
+        # write vertex coordinates
+        for row in x:
+            f.write(f"v {float(row[0]):.6f} {float(row[1]):.6f} 0.0\n") 
+        # write vertex indices for each triangle
+        for i in range(0, n_seg):
+            for j in range(0, n_seg):
+                #NOTE: each cell is exported as 2 triangles for rendering
+                f.write(f"f {i * (n_seg+1) + j + 1} {(i+1) * (n_seg+1) + j + 1} {(i+1) * (n_seg+1) + j+1 + 1}\n")
+                f.write(f"f {i * (n_seg+1) + j + 1} {(i+1) * (n_seg+1) + j+1 + 1} {i * (n_seg+1) + j+1 + 1}\n")
+</code></pre>
+<p>在所有组件都正确设置之后，下一阶段是启动仿真循环。该循环推进时间积分，并在每个时间步可视化结果。要运行该仿真程序，请在终端中使用以下命令：</p>
+<pre><code class="language-python">python3 simulator.py
+</code></pre>
+<blockquote>
+<p><strong><a name="rem:lec4:sim_remarks"></a>
+<em>注记 4.5.1 (实践考虑).</em></strong>
+在仿真器实现就绪之后，我们便能够灵活地试验优化时间积分方案的各种配置。这类测试有助于深入理解每个关键组件的作用与影响。</p>
+<p>举例来说，如果我们不把质点-弹簧的海森矩阵投影为对称正定（Symmetric Positive Definite，SPD）形式，在某些条件下可能会出现异常行为。例如，以 <code>h=0.02</code> 的帧率时间步长、<code>initial_stretch</code> 为 <code>0.5</code> 运行仿真，可能导致线搜索失败。这又会把时间步长压得很小，使优化迟迟无法推进。</p>
+<p>虽然线搜索在这个简单的二维示例中似乎多余，但在更复杂的三维弹性动力学仿真中，尤其是涉及大变形的情形，其必要性便显而易见。此时，线搜索对于确保仿真的收敛至关重要。</p>
+<p>另一个值得关注的点是传统固体仿真器所采用的停止准则。许多此类仿真器放弃了动态停止准则，而是在预定的迭代次数之后终止优化过程。这种做法虽然简单直接，但在更具挑战性的场景中可能导致数值不稳定或“爆炸”。这凸显了审慎考虑积分方案及其参数以确保仿真稳定与准确的重要性。</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../simulation-with-optimization/case-study-2d-mass-spring/opt_time_integrator.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../simulation-with-optimization/case-study-2d-mass-spring/gpu_accel.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../simulation-with-optimization/case-study-2d-mass-spring/opt_time_integrator.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../simulation-with-optimization/case-study-2d-mass-spring/gpu_accel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
