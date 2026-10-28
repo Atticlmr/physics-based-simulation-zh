@@ -1,7 +1,7 @@
 ## 一般滑移 DBC
 
 幸运的是，对于滑移狄利克雷边界条件（Dirichlet Boundary Condition，DBC）这类按节点解耦的约束，奇异值分解（Singular Value Decomposition，SVD）得到的 $U$ 与 $V$ 直接就是块对角的，并可以用高效的程序化方式构造。
-节点 $i$ 上的三维平面滑移 DBC 可表示为
+节点 $i$ 上的三维平面滑移狄利克雷边界条件（DBC）可表示为
 $$
     \mathbf{n}_i^T (\mathbf{x}_i - \mathbf{x}_i') = 0,
 $$
@@ -17,7 +17,7 @@ $$
 $$
 其中单位向量 $\mathbf{n}_i$、$\textbf{m}_i$ 与 $\mathbf{l}_i$ 共同构成三维空间中的一组正交归一基。 
 
-于是可以看出，在全局层面上，$U$ 就是一个 $m\times m$ 单位矩阵；$S$ 是一个 $m\times dn$ 矩阵，其每一行恰好在对应于该滑移边界条件（Boundary Condition，BC）节点第一个自由度的那一列上含有一个取值为 1 的元素；$V$ 是一个 $dn \times dn$ 块对角矩阵，仅在与各 BC 节点对应的块上取 $d\times d$ 正交归一块，其余位置为 $d\times d$ 单位矩阵。
+于是可以看出，在全局层面上，$U$ 就是一个 $m\times m$ 单位矩阵；$S$ 是一个 $m\times dn$ 矩阵，其每一行恰好在对应于该滑移边界条件（Boundary Condition，BC）节点第一个自由度的那一列上含有一个取值为 1 的元素；$V$ 是一个 $dn \times dn$ 块对角矩阵，仅在与各边界条件（BC）节点对应的块上取 $d\times d$ 正交归一块，其余位置为 $d\times d$ 单位矩阵。
 
 要从 $\mathbf{n}_i$ 计算 $\textbf{m}_i$ 与 $\mathbf{l}_i$，我们首先注意到可能的解有无穷多个。 
 因此，我们可以先直接构造 $\textbf{m}_i = \mathbf{n}_i \times \begin{bmatrix}1 & 0 & 0\end{bmatrix}^T$；若 $\mathbf{n}_i$ 与 $\begin{bmatrix}1 & 0 & 0\end{bmatrix}^T$ 近乎共线，则改为 $\textbf{m}_i = \mathbf{n}_i \times \begin{bmatrix}0 & 1 & 0\end{bmatrix}^T$；然后再构造 $\mathbf{l}_i = \mathbf{n}_i \times \textbf{m}_i$。
@@ -31,7 +31,7 @@ $$
 之后，$\Delta x$ 可通过 $\Delta x = V y$ 以类似的按块（按节点）运算得到。
 
 > {{exp}}{exp:lec6:general_slip_DBC_example}[一般滑移 DBC]
-对于滑移 DBC 示例（{{ref: exp:lec5:slip}}）中提到的同一个二维两节点系统，若要把第一个节点 $(x_{11}, x_{12})$ 约束在 $3x + 4y = 2$ 这条直线上，则该滑移 DBC 可表示为
+对于滑移狄利克雷边界条件（DBC）示例（{{ref: exp:lec5:slip}}）中提到的同一个二维两节点系统，若要把第一个节点 $(x_{11}, x_{12})$ 约束在 $3x + 4y = 2$ 这条直线上，则该滑移狄利克雷边界条件（DBC）可表示为
 $$
     \begin{bmatrix}
       3 & 4 & 0 & 0
@@ -58,7 +58,7 @@ $$
     \end{bmatrix}
 $$
 以完成换基。
-接着，在某个该滑移 DBC 已满足的时间步中，假设有
+接着，在某个该滑移狄利克雷边界条件（DBC）已满足的时间步中，假设有
 $$
     H = \begin{bmatrix}
       4 & -1 & -1 & -1 \\

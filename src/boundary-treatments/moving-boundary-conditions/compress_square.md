@@ -58,20 +58,20 @@ $$
 {{#include ../../solid-sim-tutorial/5_mov_dirichlet/SpringEnergy.py}}
 ```
 
-接下来，我们专注于在计入弹簧能量的情况下进行优化，同时妥善处理收敛性检查与惩罚刚度调整。在每个时间步开始时，先计算各 DBC 节点的目标位置，并把惩罚刚度 $k_\text{M}$ 初始化为 $10$。若某些节点已到达其预设限度，我们便把它们的当前位置设为目标位置：
+接下来，我们专注于在计入弹簧能量的情况下进行优化，同时妥善处理收敛性检查与惩罚刚度调整。在每个时间步开始时，先计算各狄利克雷边界条件（DBC）节点的目标位置，并把惩罚刚度 $k_\text{M}$ 初始化为 $10$。若某些节点已到达其预设限度，我们便把它们的当前位置设为目标位置：
 
 {{imp}}{imp:lec11:dbc_initialization}[DBC 初始化，time_integrator.py]
 ```python
 {{#include ../../solid-sim-tutorial/5_mov_dirichlet/time_integrator.py:dbc_initialization}}
 ```
 
-进入牛顿迭代循环后，在每次迭代中、计算搜索方向之前，我们先评估有多少 DBC 节点已足够接近其目标位置，并把结果存入变量 `DBC_satisfied`：
+进入牛顿迭代循环后，在每次迭代中、计算搜索方向之前，我们先评估有多少狄利克雷边界条件（DBC）节点已足够接近其目标位置，并把结果存入变量 `DBC_satisfied`：
 
 {{imp}}{imp:lec11:dbc_check}[DBC 满足情况检查，time_integrator.py]
 ```python
 {{#include ../../solid-sim-tutorial/5_mov_dirichlet/time_integrator.py:dbc_check}}
 ```
-然后我们只对已经满足边界条件的那些 DBC 节点消去自由度：
+然后我们只对已经满足边界条件的那些狄利克雷边界条件（DBC）节点消去自由度：
 
 {{imp}}{imp:lec11:dof_elimination}[自由度消元，time_integrator.py]
 ```python

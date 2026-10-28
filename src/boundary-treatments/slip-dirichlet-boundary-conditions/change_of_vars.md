@@ -2,7 +2,7 @@
 
 ### 一般滑移 DBC 与自由度消元法面临的困难
 
-在处理一般线性等式约束（例如非轴对齐的滑移 DBC）时，直接套用自由度（Degrees of Freedom，DOF）消元法存在一定局限。当 \\( AA^T \\) 不是 \\( m \times m \\) 单位矩阵时，这一点尤为明显。根据 Karush-Kuhn-Tucker（KKT）系统（式 {{eqref: eq:lec5:BC_KKT}}），拉格朗日乘子向量 \\( \lambda \\) 可按如下方式解出：
+在处理一般线性等式约束（例如非轴对齐的滑移狄利克雷边界条件（Dirichlet Boundary Condition，DBC））时，直接套用自由度（Degrees of Freedom，DOF）消元法存在一定局限。当 \\( AA^T \\) 不是 \\( m \times m \\) 单位矩阵时，这一点尤为明显。根据 Karush-Kuhn-Tucker（KKT）系统（式 {{eqref: eq:lec5:BC_KKT}}），拉格朗日乘子向量 \\( \lambda \\) 可按如下方式解出：
 
 $$
     \lambda = -(AA^T)^{-1} A H \Delta x - (AA^T)^{-1} Ag.
@@ -20,7 +20,7 @@ $$
 
 ### 用奇异值分解简化约束
 
-我们的做法是把自由度（DOF）变换为一组新的变量，使约束变得与粘着型 DBC 中的约束一样简单。为此，我们对约束雅可比矩阵 \\( A \\) 作奇异值分解（Singular Value Decomposition，SVD）。\\( A \\) 的 SVD 写为：
+我们的做法是把自由度（DOF）变换为一组新的变量，使约束变得与粘着型狄利克雷边界条件（DBC）中的约束一样简单。为此，我们对约束雅可比矩阵 \\( A \\) 作奇异值分解（Singular Value Decomposition，SVD）。\\( A \\) 的 SVD 写为：
 $$
     A = U S V^T.
 $$
