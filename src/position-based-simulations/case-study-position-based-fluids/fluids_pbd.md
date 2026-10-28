@@ -1,6 +1,6 @@
 # 案例研究：基于位置的流体仿真*
 
-基于位置的动力学框架可以很自然地推广到不可压缩流体的仿真。由此得到的方法称为基于位置的流体（Position-Based Fluids，PBF）{{#cite macklin2013position}}，它用一组几何约束取代了传统光滑粒子流体动力学（Smoothed Particle Hydrodynamics，SPH）{{#cite koschier2020smoothed}}中复杂的压力求解。这一方法继承了 PBD 的稳定性与高效性，允许使用适合实时应用的大时间步长，同时有效地强制满足不可压缩流动所特有的常密度条件。
+基于位置的动力学框架可以很自然地推广到不可压缩流体的仿真。由此得到的方法称为基于位置的流体（Position-Based Fluids，PBF）{{#cite macklin2013position}}，它用一组几何约束取代了传统光滑粒子流体动力学（Smoothed Particle Hydrodynamics，SPH）{{#cite koschier2020smoothed}}中复杂的压力求解。这一方法继承了基于位置的动力学（Position-Based Dynamics，PBD）的稳定性与高效性，允许使用适合实时应用的大时间步长，同时有效地强制满足不可压缩流动所特有的常密度条件。
 
 在 [基于位置的流体：密度与表面约束](./density_constraints.md) 所建立的理论基础之上，本案例研究演示如何实现一个完整的 PBF 仿真系统。与前面讨论的其他 PBD 应用领域（布料与体积网格）相比，流体通过密度约束实现不可压缩性，这带来了独特的挑战。
 

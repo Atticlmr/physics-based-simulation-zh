@@ -1,6 +1,6 @@
 ## 共轭梯度法
 
-共轭梯度（Conjugate Gradient，CG）法是求解 $Ax = b$ 形式大型稀疏线性系统的一种强有力迭代算法，其中 $A$ 为对称正定（SPD）矩阵。与 Jacobi、Gauss-Seidel 等一般迭代法不同，CG 专为 SPD 矩阵设计，已成为科学计算与数值仿真中的基础算法。
+共轭梯度（Conjugate Gradient，CG）法是求解 $Ax = b$ 形式大型稀疏线性系统的一种强有力迭代算法，其中 $A$ 为对称正定（Symmetric Positive Definite，SPD）矩阵。与 Jacobi、Gauss-Seidel 等一般迭代法不同，CG 专为 SPD 矩阵设计，已成为科学计算与数值仿真中的基础算法。
 
 ### 表述为二次优化问题
 

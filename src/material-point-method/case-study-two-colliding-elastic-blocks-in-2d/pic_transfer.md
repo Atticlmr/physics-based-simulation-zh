@@ -7,7 +7,7 @@
 {{#include ../../solid-sim-tutorial/10_mpm_elasticity/simulator.py:reset_grid}}
 ```
 
-我们采用 Saint Venant–Kirchhoff（StVK）本构模型，它利用变形梯度的 SVD，在对数（Hencky）应变空间中表述。
+我们采用 Saint Venant–Kirchhoff（StVK）本构模型，它利用变形梯度的奇异值分解（Singular Value Decomposition，SVD），在对数（Hencky）应变空间中表述。
 
 {{imp}}{imp:lec29:stvk}[Stvk Hencky 弹性，simulator.py]
 ```python
@@ -43,7 +43,7 @@
 {{#include ../../solid-sim-tutorial/10_mpm_elasticity/simulator.py:particle_update}}
 ```
 
-一个完整的 MPM 仿真步由以下阶段组成：
+一个完整的物质点法（Material Point Method，MPM）仿真步由以下阶段组成：
 
 {{imp}}{imp:lec29:time_step}[MPM 的一个完整时间步，simulator.py]
 ```python

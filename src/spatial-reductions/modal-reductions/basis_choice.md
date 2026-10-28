@@ -6,7 +6,7 @@
 这种数据驱动方法又称**本征正交分解**（Principal Orthogonal Directions，POD），它从已有的仿真数据中构造出最优基。
 
 首先离线运行一次未降维的仿真，生成 $N$ 个变形状态向量 $\{\mathbf{u}_1, \mathbf{u}_2, ..., \mathbf{u}_N\}$。
-随后把这些快照组装成矩阵 $\mathbf{A} = [\mathbf{u}_1, \mathbf{u}_2, ..., \mathbf{u}_N]$。通过对该矩阵做奇异值分解（SVD）来提取基，通常相对于质量加权内积 $\langle\mathbf{x}, \mathbf{y}\rangle_\mathbf{M} = \mathbf{x}^T\mathbf{M}\mathbf{y}$ 进行（这一技术称为质量-PCA）。分解 $\mathbf{A} = \mathbf{U}\Sigma\mathbf{V}^T$ 中对应最大 $r$ 个奇异值的 $\mathbf{U}$ 的列，就构成基 $\mathbf{U}$！
+随后把这些快照组装成矩阵 $\mathbf{A} = [\mathbf{u}_1, \mathbf{u}_2, ..., \mathbf{u}_N]$。通过对该矩阵做奇异值分解（Singular Value Decomposition，SVD）来提取基，通常相对于质量加权内积 $\langle\mathbf{x}, \mathbf{y}\rangle_\mathbf{M} = \mathbf{x}^T\mathbf{M}\mathbf{y}$ 进行（这一技术称为质量-PCA）。分解 $\mathbf{A} = \mathbf{U}\Sigma\mathbf{V}^T$ 中对应最大 $r$ 个奇异值的 $\mathbf{U}$ 的列，就构成基 $\mathbf{U}$！
 
 该方法对训练数据而言是最优的，但其主要缺点在于必须做一次缓慢的离线预仿真。
 

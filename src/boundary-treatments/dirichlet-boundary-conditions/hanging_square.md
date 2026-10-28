@@ -13,7 +13,7 @@ $$
 ```python
 {{#include ../../solid-sim-tutorial/2_dirichlet/GravityEnergy.py}}
 ```
-然后我们只需确保重力势能被加入增量势能（IP）：
+然后我们只需确保重力势能被加入增量势能（Incremental Potential，IP）：
 
 {{imp}}{imp:lec5:time_integrator_1}[把重力加入 IP，time_integrator.py]
 ```python

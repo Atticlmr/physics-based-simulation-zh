@@ -1,6 +1,6 @@
 ## 障碍势能
 
-正如[非穿透的距离障碍函数](../../boundary-treatments/distance-barrier-for-nonpenetration/dist_barrier.md)中所讨论的，IPC 处理固体-障碍物接触的原理是：借助障碍函数，确保仿真全过程中任意节点自由度（DOF）与障碍物之间的有符号距离始终为正。为处理自接触（对于余维对象尤其可能出现），这一思想被进一步推广：确保仿真全过程中任意边界点与边界之间的无符号距离始终不为零。
+正如[非穿透的距离障碍函数](../../boundary-treatments/distance-barrier-for-nonpenetration/dist_barrier.md)中所讨论的，增量势能接触（Incremental Potential Contact，IPC）处理固体-障碍物接触的原理是：借助障碍函数，确保仿真全过程中任意节点自由度（Degree of Freedom，DOF）与障碍物之间的有符号距离始终为正。为处理自接触（对于余维对象尤其可能出现），这一思想被进一步推广：确保仿真全过程中任意边界点与边界之间的无符号距离始终不为零。
 
 我们考虑边界上两个相互碰撞的区域 $\Gamma_1 \subset \partial \Omega^0$ 与 $\Gamma_2 \subset \partial \Omega^0$。对任意点 $\mathbf{X}_1 \in \Gamma_1$，必须确保 $\mathbf{X}_1$ 与 $\Gamma_2$ 上任意点之间的最近距离始终不为零。这可以通过障碍函数来强制该最小距离实现，而该函数的负梯度即给出接触力。此式可写作
 

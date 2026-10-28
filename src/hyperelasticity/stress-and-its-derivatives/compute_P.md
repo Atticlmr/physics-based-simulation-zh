@@ -11,7 +11,7 @@ $$
 \end{aligned}
 {{numeq}}{eqn:PdiagonalSpace}
 $$
-该形式利用了 $\mathbf{P}$ 与 $\mathbf{F}$ 共享同一 SVD 空间这一性质，从而简化了推导与计算过程。
+该形式利用了 $\mathbf{P}$ 与 $\mathbf{F}$ 共享同一奇异值分解（Singular Value Decomposition，SVD）空间这一性质，从而简化了推导与计算过程。
 
 > **{{exp}}{exp:lec13:neo_hook_model}**
 > 对于新胡克模型（式 {{eqref: eq:lec13:strain_density_NH}}），有：

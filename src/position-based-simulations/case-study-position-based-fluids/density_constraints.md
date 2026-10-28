@@ -22,7 +22,7 @@ C_i(\bm{p}_1, ..., \bm{p}_N) = \frac{\rho_i}{\rho_0} - 1
 $$
 该约束在 $C_i = 0$ 时得到满足。
 
-为求解该约束系统，PBF 为每个粒子计算位置修正 $\Delta \bm{p}_i$。按照 PBD 方法，我们首先计算 $C_i$ 关于粒子 $k$ 位置的梯度：
+为求解该约束系统，PBF 为每个粒子计算位置修正 $\Delta \bm{p}_i$。按照基于位置的动力学（Position-Based Dynamics，PBD）方法，我们首先计算 $C_i$ 关于粒子 $k$ 位置的梯度：
 $$
 {{numeq}}{eq:pbf:constraint_gradient}
 \nabla_{\bm{p}_k} C_i = \frac{1}{\rho_0} \sum_{j} m_j \nabla_{\bm{p}_k} W(\bm{p}_i - \bm{p}_j, h) =

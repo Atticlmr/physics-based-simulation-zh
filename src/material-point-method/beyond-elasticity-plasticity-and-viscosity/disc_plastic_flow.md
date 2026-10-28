@@ -1,6 +1,6 @@
 ## 塑性流动的离散化
 
-MPM 中引入塑性的方式是：把变形梯度 $\mathbf{F}$ **乘法分解**为弹性部分与塑性部分：
+物质点法（Material Point Method，MPM）中引入塑性的方式是：把变形梯度 $\mathbf{F}$ **乘法分解**为弹性部分与塑性部分：
 
 $$
 \mathbf{F} = \mathbf{F}_\mathrm{E} \, \mathbf{F}_\mathrm{P}.

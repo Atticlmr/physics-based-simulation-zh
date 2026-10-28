@@ -1,6 +1,6 @@
 ## 计算能量、梯度与海森矩阵
 
-我们首先按照[应变能](../strain-energy/strain_energy.md)与[应力及其导数](../stress-and-its-derivatives/stress_and_derivatives.md)两节，实现 $\Psi(\mathbf{F})$、$\mathbf{P} = \frac{\partial \Psi}{\partial \mathbf{F}}$ 以及经 SPD 投影的 $\frac{\partial \mathbf{P}}{\partial \mathbf{F}}$ 的计算：
+我们首先按照[应变能](../strain-energy/strain_energy.md)与[应力及其导数](../stress-and-its-derivatives/stress_and_derivatives.md)两节，实现 $\Psi(\mathbf{F})$、$\mathbf{P} = \frac{\partial \Psi}{\partial \mathbf{F}}$ 以及经对称正定（Symmetric Positive Definite，SPD）投影的 $\frac{\partial \mathbf{P}}{\partial \mathbf{F}}$ 的计算：
 
 {{imp}}{imp:lec15:NeoHookeanEnergy_wrt_F}[关于 $\mathbf{F}$ 的能量导数，NeoHookeanEnergy.py]
 ```python

@@ -21,6 +21,6 @@ $$
 $$
 这里 $\Psi_\text{ARAP}(\mathbf{F})$ 称为<strong>尽可能刚性（As-Rigid-As-Possible，ARAP）</strong>能量，广泛用于形状建模、布料仿真与曲面参数化等。$\Psi_\text{R}(\mathbf{F})$ 虽然相对 ARAP 而言是 $\mathbf{F}$ 的更高阶多项式，但其计算无需对 $\mathbf{F}$ 执行昂贵的 SVD。
 
-本讲中我们考察过的所有应变能密度函数，除新胡克模型外，其余都定义在整个定义域 $\mathbb{R}^{d\times d}$ 上。新胡克能量密度函数定义在 $\{\mathbf{F} \ | \ \mathbf{F} \in \mathbb{R}^{d\times d}, \ \det(\mathbf{F})>0 \}$ 上。正如 IPC 中用于防止相互穿透的障碍能量，$\Psi_\text{NH}(\mathbf{F})$ 也是一种障碍能量，当 $\det(\mathbf{F})$ 趋近于 $0$ 时它趋于无穷大，从而提供任意大的弹性力以防止**翻转**（$\det(\mathbf{F}) \leq 0$）。
+本讲中我们考察过的所有应变能密度函数，除新胡克模型外，其余都定义在整个定义域 $\mathbb{R}^{d\times d}$ 上。新胡克能量密度函数定义在 $\{\mathbf{F} \ | \ \mathbf{F} \in \mathbb{R}^{d\times d}, \ \det(\mathbf{F})>0 \}$ 上。正如增量势能接触（Incremental Potential Contact，IPC）中用于防止相互穿透的障碍能量，$\Psi_\text{NH}(\mathbf{F})$ 也是一种障碍能量，当 $\det(\mathbf{F})$ 趋近于 $0$ 时它趋于无穷大，从而提供任意大的弹性力以防止**翻转**（$\det(\mathbf{F}) \leq 0$）。
 
 允许 $\det(\mathbf{F}) \leq 0$ 的应变能密度函数也称为**可逆弹性模型**。它们易于处理（无需线搜索过滤），但不能保证无翻转。设计一种既能提供相当大的抗翻转能力又可逆的弹性能量，在计算机图形学研究中受到了广泛关注 {{#cite stomakhin2012energetically}} {{#cite smith2018stable}}。

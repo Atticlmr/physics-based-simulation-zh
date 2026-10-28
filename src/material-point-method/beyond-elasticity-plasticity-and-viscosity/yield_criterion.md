@@ -18,7 +18,7 @@ $$
 
 > {{exp}}{exp:lec27:von_mises_log_strain}[冯·米塞斯屈服准则，对数应变形式]
 >
-> 在基于对数应变的塑性理论中，返回映射在 SVD 对角化后的空间中进行。设 $\mathbf{F}^{n+1} = \mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^T$，$\boldsymbol{\sigma}_p^n$ 为已存储的塑性对数应变。试探弹性拉伸为：
+> 在基于对数应变的塑性理论中，返回映射在奇异值分解（Singular Value Decomposition，SVD）对角化后的空间中进行。设 $\mathbf{F}^{n+1} = \mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^T$，$\boldsymbol{\sigma}_p^n$ 为已存储的塑性对数应变。试探弹性拉伸为：
 > $$
 \boldsymbol{\Sigma}_\mathrm{tr} = \boldsymbol{\Sigma} \cdot \left( \exp(\boldsymbol{\sigma}_p^n) \right)^{-1}, \quad
 \boldsymbol{\epsilon}_\mathrm{tr} = \log(\boldsymbol{\Sigma}_\mathrm{tr}).

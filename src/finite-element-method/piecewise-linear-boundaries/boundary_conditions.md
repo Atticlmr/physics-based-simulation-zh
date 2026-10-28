@@ -2,7 +2,7 @@
 
 ### 狄利克雷
 
-得益于有限元方法（FEM）精确的边界分辨率，施加狄利克雷边界条件十分直接。我们只需把边界节点的世界空间坐标约束到给定值：
+得益于有限元方法（Finite Element Method，FEM）精确的边界分辨率，施加狄利克雷边界条件十分直接。我们只需把边界节点的世界空间坐标约束到给定值：
 
 $$
 \hat{\mathbf{x}}(\mathbf{X}_i) = \mathbf{x}_D(\mathbf{X}_i) \quad \forall \ \mathbf{X}_i \in \Gamma_D.

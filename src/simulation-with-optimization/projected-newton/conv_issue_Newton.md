@@ -24,7 +24,7 @@ $f(x)$ 与 $g(x)$ 的联合绘图（{{ref: fig:lec3:newton_issue_plot}}）清楚
     <figcaption><b>{{fig}}{fig:lec3:newton_issue_plot}</b> 在 $x=2$ 处对 $\min_x E(x) = \ln\left(e^{-x}+e^{x}\right)$ 执行牛顿法的一次迭代。 </figcaption>
 </figure>
 
-> **{{rem}}{rem:lec3:convexity}[能量的凸性]** 凸函数的特征是其在整个定义域上的二阶导数对称正定（SPD）。相反，计算机图形学中使用的大多数非线性弹性模型的能量具有旋转不变性。这意味着无论物体或单元处于何种旋转朝向，能量值都保持不变。这种旋转不变性导致了**非凸性**，使优化过程更加复杂。
+> **{{rem}}{rem:lec3:convexity}[能量的凸性]** 凸函数的特征是其在整个定义域上的二阶导数对称正定（Symmetric Positive Definite，SPD）。相反，计算机图形学中使用的大多数非线性弹性模型的能量具有旋转不变性。这意味着无论物体或单元处于何种旋转朝向，能量值都保持不变。这种旋转不变性导致了**非凸性**，使优化过程更加复杂。
 
 
 > {{def}}{def:lec3:spd}[对称正定性]

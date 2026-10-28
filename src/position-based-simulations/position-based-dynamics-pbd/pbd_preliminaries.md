@@ -1,6 +1,6 @@
 ## 预备知识
 
-要充分领会 PBD 方法，首先需要理解它所借鉴的拉格朗日动力学的经典表述。由 $N$ 个粒子组成的动力学系统的状态，由各粒子的质量 $m_i$、位置 $\bm{p}_i \in \mathbb{R}^3$ 与速度 $\bm{v}_i \in \mathbb{R}^3$ 描述。该系统的演化由牛顿第二定律导出的两个一阶常微分方程控制：
+要充分领会基于位置的动力学（Position-Based Dynamics，PBD）方法，首先需要理解它所借鉴的拉格朗日动力学的经典表述。由 $N$ 个粒子组成的动力学系统的状态，由各粒子的质量 $m_i$、位置 $\bm{p}_i \in \mathbb{R}^3$ 与速度 $\bm{v}_i \in \mathbb{R}^3$ 描述。该系统的演化由牛顿第二定律导出的两个一阶常微分方程控制：
 $$
 \dot{\bm{v}}_i = \frac{1}{m_i} \bm{f}_i
 {{numeq}}{eq:lagrangian:particle_motion}

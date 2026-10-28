@@ -20,7 +20,7 @@ $$
 $$
 其中 $\bm{n}$ 是沿边方向的单位向量。
 
-按照标准的 PBD 投影公式，标量拉格朗日乘子 $\lambda$ 计算为：
+按照标准的基于位置的动力学（Position-Based Dynamics，PBD）投影公式，标量拉格朗日乘子 $\lambda$ 计算为：
 $$
 {{numeq}}{eq:mesh:edge_lambda}
 \lambda = \frac{C(\bm{p}_1, \bm{p}_2)}{w_1\|\nabla_{\bm{p}_1} C\|^2 + w_2\|\nabla_{\bm{p}_2} C\|^2} = \frac{\|\bm{p}_1 - \bm{p}_2\| - d}{w_1 + w_2}

@@ -56,7 +56,7 @@ $$
 $$
 分别对应 Jacobi、前向 Gauss-Seidel 与反向 Gauss-Seidel 迭代。这些方法的收敛性取决于谱半径 $\rho(G)$（即 $G$ 的特征值绝对值的最大者）。当且仅当 $\rho(G) < 1$ 时，方法收敛。
 
-两类方法收敛的一个充分条件是 $A$ **严格对角占优**（即对所有 $i$ 有 $|A_{ii}| > \sum_{j \neq i} |A_{ij}|$）。对于 Gauss-Seidel 法，只要 $A$ 对称正定（SPD），收敛性同样有保证。
+两类方法收敛的一个充分条件是 $A$ **严格对角占优**（即对所有 $i$ 有 $|A_{ii}| > \sum_{j \neq i} |A_{ij}|$）。对于 Gauss-Seidel 法，只要 $A$ 对称正定（Symmetric Positive Definite，SPD），收敛性同样有保证。
 
 ### 终止准则
 

@@ -1,6 +1,6 @@
 ## 案例研究：ABD 方块下落*
 
-现在我们在二维中实现仿射体动力学（ABD），用于[方块下落](../../boundary-treatments/filter-line-search/square_drop.md)仿真的新胡克（neo-Hookean）版本。这只需对标准 IPC 仿真代码做少量修改。完整实现见我们的[固体仿真教程](https://github.com/phys-sim-book/solid-sim-tutorial)中的 `9_reduced_DOF` 文件夹。
+现在我们在二维中实现仿射体动力学（ABD），用于[方块下落](../../boundary-treatments/filter-line-search/square_drop.md)仿真的新胡克（neo-Hookean）版本。这只需对标准增量势能接触（Incremental Potential Contact，IPC）仿真代码做少量修改。完整实现见我们的[固体仿真教程](https://github.com/phys-sim-book/solid-sim-tutorial)中的 `9_reduced_DOF` 文件夹。
 
 我们首先引入一个计算约化基的函数。在 ABD 中，我们只考虑仿射变形。因此，我们用 `method=1`（多项式基）与 `order=1`（线性基）来提取线性基：
 

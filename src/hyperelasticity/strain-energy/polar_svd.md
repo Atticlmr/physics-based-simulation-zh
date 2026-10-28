@@ -1,6 +1,6 @@
 ## 极奇异值分解
 
-在讨论[一般滑移边界条件](../../boundary-treatments/slip-dirichlet-boundary-conditions/general_slip_DBC.md)时，我们介绍了奇异值分解（SVD）的用法。这里我们采用一种称为**极 SVD**（Polar SVD，{{ref: alg:lec13:polar_SVD}}）的变体来分解 $\mathbf{F}$：
+在讨论[一般滑移边界条件](../../boundary-treatments/slip-dirichlet-boundary-conditions/general_slip_DBC.md)时，我们介绍了奇异值分解（Singular Value Decomposition，SVD）的用法。这里我们采用一种称为**极 SVD**（Polar SVD，{{ref: alg:lec13:polar_SVD}}）的变体来分解 $\mathbf{F}$：
 $$
     \mathbf{F} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T,
 $$

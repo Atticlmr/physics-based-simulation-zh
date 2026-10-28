@@ -22,7 +22,7 @@ $$
 \sigma = \frac{1}{J} \mathbf{P} \mathbf{F}^T = \frac{1}{\text{det}(\mathbf{F})} \frac{\partial \Psi}{\partial \mathbf{F}} \mathbf{F}^T.
 $$
 
-对于不需要奇异值分解（SVD）的能量模型，例如新胡克（Neo-Hookean）模型，由应变能函数 $\Psi(\mathbf{F})$ 计算 $\mathbf{P}$ 相对直接。然而，一般的各向同性弹性模型，如 ARAP（As-Rigid-As-Possible），往往依赖主拉伸或最近旋转矩阵的计算，因而需要 SVD。当要确定对隐式时间积分至关重要的 $\frac{\partial \mathbf{P}}{\partial \mathbf{F}}$ 时，这一计算会变得格外复杂且耗费资源。
+对于不需要奇异值分解（Singular Value Decomposition，SVD）的能量模型，例如新胡克（Neo-Hookean）模型，由应变能函数 $\Psi(\mathbf{F})$ 计算 $\mathbf{P}$ 相对直接。然而，一般的各向同性弹性模型，如 ARAP（As-Rigid-As-Possible），往往依赖主拉伸或最近旋转矩阵的计算，因而需要 SVD。当要确定对隐式时间积分至关重要的 $\frac{\partial \mathbf{P}}{\partial \mathbf{F}}$ 时，这一计算会变得格外复杂且耗费资源。
 
 我们介绍一种利用稀疏结构的高效方法（由 {{#cite stomakhin2012energetically}} 提出），用于计算一般各向同性弹性材料的第一类 Piola-Kirchhoff 应力张量 $\mathbf{P}$ 及其导数 $\frac{\partial \mathbf{P}}{\partial \mathbf{F}}$（无论以张量形式还是以微分 $\delta \mathbf{P}$ 形式给出）。该方法借助符号计算软件包，我们将具体讨论在 *Mathematica* 中的实现。在 *Maple* 或其他软件中的实现同样直接，遵循相同的概念框架。若想更深入地了解计算机图形学中常用的导数计算，可参阅 {{#cite schroeder2022practical}} 的工作。
 

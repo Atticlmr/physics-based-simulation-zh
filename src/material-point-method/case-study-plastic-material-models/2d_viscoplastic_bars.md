@@ -8,7 +8,7 @@
 
 ### St. Venant-Kirchhoff 弹性模型
 
-粘塑性模型建立在 <strong>St. Venant-Kirchhoff（StVK）</strong>弹性模型之上，并在**对数（Hencky）应变空间**中表述。StVK 模型利用变形梯度的 SVD 由对数应变计算应力。
+粘塑性模型建立在 <strong>St. Venant-Kirchhoff（StVK）</strong>弹性模型之上，并在**对数（Hencky）应变空间**中表述。StVK 模型利用变形梯度的奇异值分解（Singular Value Decomposition，SVD）由对数应变计算应力。
 
 给定变形梯度 $\mathbf{F}$ 及其 SVD $\mathbf{F} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^T$，**对数应变**定义为：
 $$\boldsymbol{\epsilon} = \log(\boldsymbol{\Sigma})$$

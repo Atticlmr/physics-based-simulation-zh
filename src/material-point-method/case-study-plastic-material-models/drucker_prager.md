@@ -7,7 +7,7 @@
 - **情形 II（膨胀）**：应力对应的构形使材料发生体积膨胀（迹为正），且不施加任何抵抗——这映射到锥顶。
 - **情形 III（剪切）**：应力位于锥体之外，但压力为压缩状态，必须投影回锥面。
 
-该模型最好在<strong>对数应变（Hencky 应变）</strong>空间中、利用变形梯度的 SVD 来实现，这已在上一节中介绍过。
+该模型最好在<strong>对数应变（Hencky 应变）</strong>空间中、利用变形梯度的奇异值分解（Singular Value Decomposition，SVD）来实现，这已在上一节中介绍过。
 
 > {{exp}}{exp:lec27:drucker_prager_yield_criterion}[Drucker-Prager 屈服准则，对数应变形式]
 > 我们将**对数应变**定义为：

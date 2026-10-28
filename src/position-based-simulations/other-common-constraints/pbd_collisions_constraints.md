@@ -1,6 +1,6 @@
 ## 碰撞约束
 
-在任何物理仿真中，防止物体相互穿透都是获得可信结果的首要前提。基于位置的动力学为此提供了一种统一的处理方式。碰撞不再被当作依赖冲量或惩罚力的独立后处理步骤，而是与 [IPC](../../boundary-treatments/distance-barrier-for-nonpenetration/dist_barrier.md) {{#cite li2020incremental}} 一样，被表述为单边不等式约束，并直接集成到 PBD 求解器的核心循环之中。
+在任何物理仿真中，防止物体相互穿透都是获得可信结果的首要前提。基于位置的动力学为此提供了一种统一的处理方式。碰撞不再被当作依赖冲量或惩罚力的独立后处理步骤，而是与 [IPC](../../boundary-treatments/distance-barrier-for-nonpenetration/dist_barrier.md) {{#cite li2020incremental}} 一样，被表述为单边不等式约束，并直接集成到基于位置的动力学（Position-Based Dynamics，PBD）求解器的核心循环之中。
 
 ### 三角形自碰撞
 

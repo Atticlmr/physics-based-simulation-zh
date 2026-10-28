@@ -1,6 +1,6 @@
 ## 粒子-网格传输
 
-在 MPM 中，物质状态存储在**拉格朗日粒子**上，而[控制方程](../../governing-equations/strong-and-weak-forms/strong_and_weak_forms.md)（例如动量守恒）则在临时的**欧拉网格**上求解。因此，我们必须在每个时间步内在粒子与网格节点之间传输信息。
+在物质点法（Material Point Method，MPM）中，物质状态存储在**拉格朗日粒子**上，而[控制方程](../../governing-equations/strong-and-weak-forms/strong_and_weak_forms.md)（例如动量守恒）则在临时的**欧拉网格**上求解。因此，我们必须在每个时间步内在粒子与网格节点之间传输信息。
 
 本节讨论**质量**、**动量**与<strong>内力（应力）</strong>如何从粒子传输到网格（P2G），以及更新后的速度如何从网格传回粒子（G2P）。
 
